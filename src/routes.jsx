@@ -4,8 +4,8 @@ import {
   Route
 } from 'react-router-dom';
 import App from './app';
-import About from './components/About';
-import Sample from './components/Sample';
+import About from './view/About';
+import Sample from './view/Sample';
 
 const Routes = () => (
   <Router>

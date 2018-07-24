@@ -3,14 +3,14 @@ const path = require('path');
 
 // Options passed to node-sass
 const sassIncludePaths = [
-  path.resolve(__dirname, 'styles'),
+  path.resolve(__dirname, 'src/styles'),
 ];
 
 
 // These files will be imported in every sass file
 const sassResourcesPaths = [
-  path.resolve(__dirname, 'styles/abstracts/_variables.sass'),
-  path.resolve(__dirname, 'styles/abstracts/_mixins.sass'),
+  path.resolve(__dirname, 'src/styles/abstracts/_variables.sass'),
+  path.resolve(__dirname, 'src/styles/abstracts/_mixins.sass'),
 ];
 
 // noinspection WebpackConfigHighlighting
@@ -143,7 +143,7 @@ module.exports = [
   // (leave them as global css styles)
   {
     test: /\.(sass|scss)$/,
-    include: path.resolve(__dirname, 'styles/base'),
+    include: path.resolve(__dirname, 'src/styles/base'),
     use: [
       {
         loader: "style-loader",
@@ -183,7 +183,7 @@ module.exports = [
   // ======================
   {
     test: /\.(sass|scss)$/,
-    exclude: path.resolve(__dirname, 'styles/base'),
+    exclude: path.resolve(__dirname, 'src/styles/base'),
     use: [
       {
         loader: "style-loader",

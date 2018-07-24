@@ -34,7 +34,7 @@ Tired of complicated starters with 200MB of dependencies which are hard to under
 * Fork and clone the project:
 
 ```
-git clone https://github.com/ReactJSResources/react-webpack-babel.git
+git clone https:https://github.com/DoTheMonkeyBusiness/carshering.git
 ```
 
 * Then install the dependencies:
@@ -49,7 +49,7 @@ npm install
 npm start
 ```
 
-* Or you can run development server with [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard):
+* Or you can run development server with [webpack-dashboard]:
 
 ```
 npm run dev

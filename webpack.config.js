@@ -37,7 +37,7 @@ module.exports = {
       path.join(__dirname, "node_modules"), // the old 'fallback' option (needed for npm link-ed packages)
     ],
     alias: {
-      "styles": path.resolve(__dirname, 'styles/'),
+      "styles": path.resolve(__dirname, 'src/styles/'),
     }
   },
   devServer: {

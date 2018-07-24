@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigation from './components/Navigation';
+import Navigation from './view/Navigation';
 import 'normalize.css';
 
 import "styles/base/_main.sass"  // Global styles

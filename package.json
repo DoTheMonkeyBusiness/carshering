@@ -1,7 +1,7 @@
 {
-  "name": "react-webpack-babel",
+  "name": "carshering",
   "version": "0.0.4",
-  "description": "React Webpack Babel Starter Kit",
+  "description": "site for exposit",
   "main": "''",
   "scripts": {
     "build": "webpack --config webpack.production.config.js --progress --profile --colors",
@@ -13,13 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ReactJSResources/react-webpack-babel"
+    "url": "https://github.com/DoTheMonkeyBusiness/carshering"
   },
-  "author": "ReactJSResources",
+  "author": "Nasalevich Maxim",
   "license": "MIT",
-  "homepage": "https://github.com/ReactJSResources/react-webpack-babel#readme",
+  "homepage": "https://github.com/DoTheMonkeyBusiness/carshering#readme",
   "dependencies": {
     "babel-polyfill": "6.26.0",
+    "material-ui": "^0.20.1",
     "normalize.css": "^7.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
