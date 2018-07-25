@@ -2,6 +2,7 @@
   extends:
     - plugin:react/recommended
 
+
   env:
     browser: true
     node: true
@@ -9,7 +10,7 @@
     jest: true
 
   parserOptions:
-   ecmaVersion: 6
+   ecmaVersion: 7
    sourceType: "module"
    ecmaFeatures:
     jsx: true
@@ -17,6 +18,7 @@
   globals:
     __DEV__: true
     __SERVER__: true
+
 
   plugins:
     - react

@@ -1,46 +1,52 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import createReactClass from'create-react-class';
+import {Link} from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+const SimpleMenu = createReactClass({
 
-class SimpleMenu extends React.Component {
-  setState = {
-    anchorEl: null,
-  };
+  getInitialState(){
+    return{
+      anchorEl: null
+    };
+  },
 
-  handleClick = event => {
+
+  handleClick(event) {
     this.setState({ anchorEl: event.currentTarget });
-  };
+  },
 
-  handleClose = () => {
+  handleClose(){
     this.setState({ anchorEl: null });
-  };
+  },
 
   render() {
     const { anchorEl } = this.state;
 
     return (
       <div>
-        <Button
+        <IconButton
+          color="inherit"
           aria-owns={anchorEl ? 'simple-menu' : null}
           aria-haspopup="true"
           onClick={this.handleClick}
-        >
-          Open Menu
-        </Button>
+        > <MenuIcon/></IconButton>
+
         <Menu
           id="simple-menu"
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-          <MenuItem onClick={this.handleClose}>My account</MenuItem>
-          <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+          <MenuItem onClick={this.handleClose} variant="contained" color="secondary" component={Link} to="/">Home</MenuItem>
+          <MenuItem onClick={this.handleClose} variant="contained" color="secondary" component={Link} to="/about">About</MenuItem>
+          <MenuItem onClick={this.handleClose} variant="contained" color="secondary" component={Link} to="/sample">Sample</MenuItem>
         </Menu>
       </div>
     );
   }
-}
+});
 
 export default SimpleMenu;

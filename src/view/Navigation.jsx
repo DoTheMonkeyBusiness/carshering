@@ -8,9 +8,9 @@ import Grid from '@material-ui/core/Grid';
 import label from '../images/labe.png';
 import Hidden from '@material-ui/core/Hidden';
 import withWidth from '@material-ui/core/withWidth';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import SimpleMenu from 'Menu';
+import SimpleMenu from './Menu';
+import Style from './navigation.sass';
+
 
 const theme = createMuiTheme({
   palette: {
@@ -48,16 +48,13 @@ const Navigation = () => (
     <Button variant="contained" color="secondary" component={Link} to="/about">About</Button>
           </Grid>
             <Grid item xs={3}>
-    <Button variant="contained" color="secondary" label="flex-end" component={Link} to="/sample">Sample</Button>
+    <Button variant="contained" color="secondary" component={Link} to="/sample">Sample</Button>
             </Grid>
       </Hidden>
         <Hidden mdUp>
-          <IconButton color="inherit" aria-label="Menu">
-            <div>
-            <MenuIcon/>
+          <Grid container justify="flex-end">
               <SimpleMenu/>
-            </div>
-          </IconButton>
+          </Grid>
         </Hidden>
       </Toolbar>
     </AppBar>
