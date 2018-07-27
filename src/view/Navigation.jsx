@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import '../../node_modules/normalize.css/normalize.css';
-import {MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import {MuiThemeProvider} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
@@ -11,24 +11,10 @@ import Hidden from '@material-ui/core/Hidden';
 import withWidth from '@material-ui/core/withWidth';
 import SimpleMenu from './Menu';
 import Style from './navigation.sass';
+import theme from './Theme';
 
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: '#2d2d2d',
-      main: '#101010',
-      dark: '#000000',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#FFE032',
-      main: '#FFD123',
-      dark: '#FDC315',
-      contrastText: '#000',
-    },
-  },
-});
+
 
 
 

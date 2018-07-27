@@ -9,6 +9,7 @@ import Sample from './view/Sample';
 import SignIn from './view/SignIn';
 import Registration from './view/Registration';
 import Admin from './view/Admin';
+import Account from './view/Account';
 
 const Routes = () => (
   <Router>
@@ -19,6 +20,7 @@ const Routes = () => (
       <Route path="/sign-in" component={SignIn}/>
       <Route path="/registration" component={Registration}/>
       <Route path="/admin" component={Admin}/>
+      <Route path="/account" component={Account}/>
     </div>
   </Router>
 );
