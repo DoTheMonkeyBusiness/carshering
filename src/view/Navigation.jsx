@@ -10,7 +10,6 @@ import label from '../images/labe.png';
 import Hidden from '@material-ui/core/Hidden';
 import withWidth from '@material-ui/core/withWidth';
 import SimpleMenu from './Menu';
-import Style from './navigation.sass';
 import theme from './Theme';
 
 

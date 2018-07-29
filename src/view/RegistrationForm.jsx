@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 import classNames from 'classnames';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
@@ -7,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
@@ -30,13 +32,12 @@ const styles = theme => ({
 });
 
 
-class InputAdornments extends React.Component {
+class InputAdornments extends Component {
   state = {
-    amount: '',
     password: '',
-    weight: '',
-    weightRange: '',
     showPassword: false,
+    helperHidden: true,
+    error: false
   };
 
   handleChange = prop => event => {
@@ -50,23 +51,40 @@ class InputAdornments extends React.Component {
   handleClickShowPassword = () => {
     this.setState(state => ({ showPassword: !state.showPassword }));
   };
+  validMail = (event) =>{
+    var regex = /^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$/
+    var searchQuery = event.target.value;
+    if(!regex.test(searchQuery)) {
+      this.setState(({helperHidden: false}));
+      this.setState(({error: true}));
+    }
+  };
+
+  setHelperHidden = () =>{
+    this.setState(({helperHidden: true}));
+    this.setState(({error: false}));
+  };
 
   render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.root}>
-        <Grid container justify="center">
+          <FormControl>
         <Grid item xs={12}>
         <FormControl
           className={classNames(classes.margin, classes.withoutLabel, classes.textField, Style.inputStyle)}
-          aria-describedby="weight-helper-text"
+          aria-describedby="adornment-mail"
         >
           <InputLabel htmlFor="adornment-mail">Mail</InputLabel>
           <Input
+            error={this.state.error}
             id="adornment-mail"
             onChange={this.handleChange('mail')}
+            onClick={this.setHelperHidden}
+            onBlur={this.validMail}
           />
+          <FormHelperText id="adornment-mail" hidden={this.state.helperHidden}>check the correctness of the mail</FormHelperText>
         </FormControl>
         </Grid>
         <Grid item xs={12}>
@@ -95,11 +113,11 @@ class InputAdornments extends React.Component {
 
           <Grid container justify="center">
             <Grid item xs={4}>
-              <Button className={Style.formButton}>Submit</Button>
+              <Button className={Style.formButton} component={Link} to="/account">Submit</Button>
             </Grid>
           </Grid>
+          </FormControl>
 
-        </Grid>
       </div>
     );
   }

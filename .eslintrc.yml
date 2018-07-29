@@ -10,7 +10,7 @@
     jest: true
 
   parserOptions:
-   ecmaVersion: 7
+   ecmaVersion: 6
    sourceType: "module"
    ecmaFeatures:
     jsx: true
@@ -38,6 +38,7 @@
     eol-last: 1
     comma-spacing: 1
     eqeqeq: 1
+
 
     # possible errors
     comma-dangle: 0
@@ -80,5 +81,6 @@
     no-undef-init: 2
     no-undef: 2
     no-undefined: 2
-    no-unused-vars: 2
+    no-unused-vars: 0
     no-use-before-define: 2
+    no-limited-syntax: 0
