@@ -2,8 +2,8 @@ import React from 'react';
 import createReactClass from'create-react-class';
 import {Link} from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
-import "styles/base/_main.sass"  // Global styles
-import "styles/base/_common.sass"  // Global styles
+import 'styles/base/_main.sass'  // Global styles
+import 'styles/base/_common.sass'  // Global styles
 import '../../node_modules/normalize.css/normalize.css';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';

@@ -1,6 +1,6 @@
 import React from 'react';
 import car from '../images/car.png';
-import Navigation from './Navigation';
+import Navigation from '../components/Navigation';
 
 
 const About = () => (
