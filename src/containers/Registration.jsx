@@ -7,10 +7,14 @@ import Grid from '@material-ui/core/Grid';
 import theme from '../components/Theme';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import RegistrationForm from '../components/RegistrationForm';
+import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {addNewUser} from '../actions';
 
 class Registration extends Component {
 
 	render() {
+    console.log(this.props);
 		return (
 			<div>
 				<MuiThemeProvider theme={theme}>
@@ -19,7 +23,7 @@ class Registration extends Component {
 							<h1 className={Style.headerStyle}>Registration in the Carshering system</h1>
 							<Grid container justify="center">
 								<div className={Style.registration_form}>
-									<RegistrationForm/>
+									<RegistrationForm users={this.props.users} addNewUser={this.props.addNewUser}/>
 								</div>
 							</Grid>
 						</Grid>
@@ -30,4 +34,15 @@ class Registration extends Component {
 	}
 }
 
-export default Registration;
+
+const mapStateToProps = (State) => {
+  return {
+    users: State.userReducer.users
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addNewUser: bindActionCreators(addNewUser, dispatch),
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);

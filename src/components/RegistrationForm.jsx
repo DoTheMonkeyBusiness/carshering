@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import classNames from 'classnames';
-import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,10 +13,8 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Grid from '@material-ui/core/Grid';
 import Style from '../containers/registration.sass';
-import MailExists from  '../components/MailExists';
-import MailConfirm from  '../components/MailConfirm';
-import ErrorDialog from  '../components/ErrorDialog';
-import RegistationController from  '../controllers/RegistrationController';
+import RegistrationController from  '../controllers/RegistrationController';
+import {whyDidYouUpdate} from 'why-did-you-update';
 
 const styles = theme => ({
 	root: {
@@ -35,8 +32,8 @@ const styles = theme => ({
 	},
 });
 
-
-class InputAdornments extends Component {
+whyDidYouUpdate(React);
+class InputAdornments extends PureComponent {
   constructor(){
     super();
 
@@ -60,7 +57,7 @@ class InputAdornments extends Component {
   	event.preventDefault();
   };
 
-  checkPassword = (event) =>{
+  checkPassword = (event) => {
     var passwordString = event.target.value;
     this.setState(({ showPassword: passwordString }));
   };
@@ -84,21 +81,27 @@ class InputAdornments extends Component {
   	this.setState(({error: false}));
   };
 
-  // checkForMail = () =>{
-  //   this.setState(state =>({mailExists: !state.mailExists}));
-  //   return this.state.mailExists;
-  // };
+  checkForMail = () => {
+    const userList = this.props.users;
+    console.log(userList);
+    let usersMail = Object.keys(userList).map(c => {
+      return (userList[c].email)
+    });
+    if (usersMail.indexOf(this.state.mail) !== -1){
+      this.setState({mailExists: true})
+    }
+  };
 
-  checkCorrectness = () =>{
+  checkCorrectness = () => {
     this.setState(({open: true}));
-    this.setState(state =>({mailExists: !state.mailExists}));
+    this.checkForMail();
     if((this.state.mail.length !== 0) && (this.state.password.length !==0))
     {  	this.setState(({correctForm: true}));
     }
     else {this.setState(({correctForm: false}));}
   };
 
-  closeDialog = () =>{
+  closeDialog = () => {
     this.setState(({open: false}));
   };
 
@@ -155,7 +158,7 @@ class InputAdornments extends Component {
   					</Grid>
   				</Grid>
   			</form>
-        <div><RegistationController mailExists={this.state.mailExists} mail={this.state.mail} open={this.state.open} correctForm={this.state.correctForm} closeDialog={this.closeDialog}/></div>
+        <div><RegistrationController mailExists={this.state.mailExists} mail={this.state.mail} open={this.state.open} correctForm={this.state.correctForm} closeDialog={this.closeDialog}/></div>
   		</div>
   	);
   }
@@ -164,5 +167,7 @@ class InputAdornments extends Component {
 InputAdornments.propTypes = {
 	classes: PropTypes.object.isRequired,
 };
+
+
 
 export default withStyles(styles)(InputAdornments);

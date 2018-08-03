@@ -4,6 +4,7 @@ import {AppContainer} from 'react-hot-loader'
 import Routes from './routes'
 
 
+
 const renderApp = (Component) => {
   ReactDOM.render(
     <AppContainer>

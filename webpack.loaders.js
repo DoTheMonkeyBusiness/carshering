@@ -23,7 +23,7 @@ module.exports = [
   {
     test: /\.jsx?$/,
     include: path.resolve(__dirname, 'src'),
-    loader: "babel-loader",
+    loader: 'babel-loader',
     options: {
       // This is a feature of `babel-loader` for Webpack (not Babel itself).
       // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -37,29 +37,29 @@ module.exports = [
   // =========
   {
     test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-    exclude: path.resolve(__dirname, "node_modules"),
-    use: ["file-loader"]
+    exclude: path.resolve(__dirname, 'node_modules'),
+    use: ['file-loader']
   },
   {
     test: /\.(woff|woff2)$/,
-    exclude: path.resolve(__dirname, "node_modules"),
+    exclude: path.resolve(__dirname, 'node_modules'),
     use: [
       {
-        loader: "url-loader",
-        options: {prefix: "font", limit: 5000}
+        loader: 'url-loader',
+        options: {prefix: 'font', limit: 5000}
       }
     ]
   },
   {
     test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-    exclude: path.resolve(__dirname, "node_modules"),
+    exclude: path.resolve(__dirname, 'node_modules'),
     use: [
       {
-        loader: "url-loader",
+        loader: 'url-loader',
         options: {
-          prefix: "font",
+          prefix: 'font',
           limit: 10000,
-          mimetype: "application/octet-stream"
+          mimetype: 'application/octet-stream'
         }
       }
     ]
@@ -69,53 +69,53 @@ module.exports = [
   // ==========
   {
     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-    exclude: path.resolve(__dirname, "node_modules"),
+    exclude: path.resolve(__dirname, 'node_modules'),
     use: [
       {
-        loader: "url-loader",
+        loader: 'url-loader',
         options: {
           limit: 10000,
-          mimetype: "image/svg+xml"
+          mimetype: 'image/svg+xml'
         }
       }
     ]
   },
   {
     test: /\.gif/,
-    exclude: path.resolve(__dirname, "node_modules"),
+    exclude: path.resolve(__dirname, 'node_modules'),
     use: [
       {
-        loader: "url-loader",
+        loader: 'url-loader',
         options: {
           limit: 10000,
-          mimetype: "image/gif"
+          mimetype: 'image/gif'
         }
       }
     ]
   },
   {
     test: /\.jpg/,
-    exclude: path.resolve(__dirname, "node_modules"),
+    exclude: path.resolve(__dirname, 'node_modules'),
     use: [
       {
-        loader: "url-loader",
+        loader: 'url-loader',
         options: {
           limit: 10000,
-          mimetype: "image/jpg"
+          mimetype: 'image/jpg'
         }
       }
     ]
   },
   {
     test: /\.png/,
-    exclude: path.resolve(__dirname, "node_modules"),
+    exclude: path.resolve(__dirname, 'node_modules'),
     use: [
       {
-        loader: "url-loader",
+        loader: 'url-loader',
         options: {
           limit: 10000,
-          mimetype: "image/png",
-          name: "[path][name].[ext]"
+          mimetype: 'image/png',
+          name: '[path][name].[ext]'
         }
       }
     ]
@@ -127,10 +127,10 @@ module.exports = [
   // ==============================
   {
     test: /\.css/,
-    include: path.resolve(__dirname, "node_modules"),
+    include: path.resolve(__dirname, 'node_modules'),
     use: [
       {
-        loader: "style-loader"
+        loader: 'style-loader'
       },
       {
         loader: 'css-loader'
@@ -146,33 +146,33 @@ module.exports = [
     include: path.resolve(__dirname, 'src/styles/base'),
     use: [
       {
-        loader: "style-loader",
+        loader: 'style-loader',
       },
       {
-        loader: "css-loader",
+        loader: 'css-loader',
         options: {
           sourceMap: true,
-          camelCase: "dashes",
+          camelCase: 'dashes',
           importLoaders: 1
         }
       },
       {
-        loader: "postcss-loader",
+        loader: 'postcss-loader',
         options: {
-          sourceMap: "inline",
+          sourceMap: 'inline',
         }
       },
       {
-        loader: "sass-loader",
+        loader: 'sass-loader',
         options: {
           sourceMap: true,
-          outputStyle: "expanded",
-          indentedSyntax: "sass",
+          outputStyle: 'expanded',
+          indentedSyntax: 'sass',
           includePaths: sassIncludePaths
         }
       },
       {
-        loader: "sass-resources-loader",
+        loader: 'sass-resources-loader',
         options: {
           resources: sassResourcesPaths
         }
@@ -186,35 +186,35 @@ module.exports = [
     exclude: path.resolve(__dirname, 'src/styles/base'),
     use: [
       {
-        loader: "style-loader",
+        loader: 'style-loader',
       },
       {
-        loader: "css-loader",
+        loader: 'css-loader',
         options: {
           sourceMap: true,
-          camelCase: "dashes",
+          camelCase: 'dashes',
           importLoaders: 1,
           modules: true,
-          localIdentName: "[name]__[local]___[hash:base64:5]"
+          localIdentName: '[name]__[local]___[hash:base64:5]'
         }
       },
       {
-        loader: "postcss-loader",
+        loader: 'postcss-loader',
         options: {
-          sourceMap: "inline",
+          sourceMap: 'inline',
         }
       },
       {
-        loader: "sass-loader",
+        loader: 'sass-loader',
         options: {
           sourceMap: true,
-          outputStyle: "expanded",
-          indentedSyntax: "sass",
+          outputStyle: 'expanded',
+          indentedSyntax: 'sass',
           includePaths: sassIncludePaths
         }
       },
       {
-        loader: "sass-resources-loader",
+        loader: 'sass-resources-loader',
         options: {
           resources: sassResourcesPaths
         },

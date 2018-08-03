@@ -1,11 +1,8 @@
-import usersList from '../normalized/normalizeUsers'
-import constants from '../constants'
+import { combineReducers } from 'redux'
+import userReducer from '../reducers/UserReduser'
 
-const reducer = (state = usersList.entities, action) => {
+const chatReducer = combineReducers({
+  userReducer
+})
 
-      return state
-
-
-}
-
-export default reducer
+export default chatReducer

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 const webpack = require('webpack');
 const path = require('path');
 const loadersConf = require('./webpack.loaders');
@@ -6,8 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const HOST = process.env.HOST || "127.0.0.1";
-const PORT = process.env.PORT || "8888";
+const HOST = process.env.HOST || '127.0.0.1';
+const PORT = process.env.PORT || '8888';
 
 
 module.exports = {
@@ -33,15 +33,15 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     modules: [
-      path.join(__dirname, "src"),
-      path.join(__dirname, "node_modules"), // the old 'fallback' option (needed for npm link-ed packages)
+      path.join(__dirname, 'src'),
+      path.join(__dirname, 'node_modules'), // the old 'fallback' option (needed for npm link-ed packages)
     ],
     alias: {
-      "styles": path.resolve(__dirname, 'src/styles/'),
+      'styles': path.resolve(__dirname, 'src/styles/'),
     }
   },
   devServer: {
-    contentBase: "./public",
+    contentBase: './public',
     // do not print bundle build stats
     noInfo: true,
     // enable HMR
@@ -66,7 +66,7 @@ module.exports = {
       template: './src/template.html',
       files: {
         css: ['style.css'],
-        js: [ "bundle.js"],
+        js: [ 'bundle.js'],
       }
     }),
   ]

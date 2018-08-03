@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import MailExists from '../components/MailExists';
 import MailConfirm from '../components/MailConfirm';
 import ErrorDialog from '../components/ErrorDialog';
 
-class MyComponents extends Component {
+class MyComponents extends PureComponent {
     render() {
       if (this.props.correctForm) {
         return (

@@ -11,11 +11,11 @@ import SignIn from './containers/SignIn';
 import Registration from './containers/Registration';
 import Admin from './containers/Admin';
 import Account from './containers/Account';
-import Store from './store/index'
+import Store from './store'
 
 const Routes = () => (
 	<Router>
-    <Provider key={ module.hot ? Date.now() : store} store={Store}>
+    <Provider key={ module.hot ? Date.now() : Store} store={Store}>
 		<div>
 			<Route exact path="/" component={Home}/>
 			<Route path="/about" component={About}/>
