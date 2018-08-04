@@ -2,18 +2,23 @@ import usersList from '../normalized/normalizeUsers'
 import constants from '../constants'
 
 const userReducer = (state = usersList.entities, action) => {
+  switch(action.type) {
+    case constants.ADD_NEW_USER:
+      return {
+        ...state,
+        users: {
+          ...state.users,
+          [action.userID]: {
+          id: action.userID,
+          email: action.userMail,
+          password: action.userPassword
+          }
+        }
+        };
+    default:
+      return state
+  }
 
-  // switch(action.type) {
-  //   case constants.CONNECTED_NEW_USER:
-  //     return state.concat({
-  //       id: action.userID,
-  //       userName: action.userName
-  //     });
-  //   default:
-  //     return state
-  // }
-
-  return state
 
 };
 

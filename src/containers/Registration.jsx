@@ -42,7 +42,7 @@ const mapStateToProps = (State) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    addNewUser: bindActionCreators(addNewUser, dispatch),
+    addNewUser: bindActionCreators(addNewUser, dispatch)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Registration);

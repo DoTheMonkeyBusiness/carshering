@@ -12,6 +12,8 @@ import Registration from './containers/Registration';
 import Admin from './containers/Admin';
 import Account from './containers/Account';
 import Store from './store'
+window.state = Store;
+
 
 const Routes = () => (
 	<Router>

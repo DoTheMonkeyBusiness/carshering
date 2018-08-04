@@ -15,6 +15,7 @@ import Grid from '@material-ui/core/Grid';
 import Style from '../containers/registration.sass';
 import RegistrationController from  '../controllers/RegistrationController';
 import {whyDidYouUpdate} from 'why-did-you-update';
+import Store from '../store';
 
 const styles = theme => ({
 	root: {
@@ -87,22 +88,30 @@ class InputAdornments extends PureComponent {
     let usersMail = Object.keys(userList).map(c => {
       return (userList[c].email)
     });
+    console.log(usersMail);
     if (usersMail.indexOf(this.state.mail) !== -1){
-      this.setState({mailExists: true})
+      this.setState({mailExists: true});
+    }
+    else {
+      this.setState({mailExists: false});
+      this.props.addNewUser({userID: Date.now(), userMail: this.state.mail, userPassword: this.state.password});
+      console.log('addNewUser',this.props.addNewUser);
+      console.log(Store.getState());
     }
   };
 
   checkCorrectness = () => {
     this.setState(({open: true}));
-    this.checkForMail();
     if((this.state.mail.length !== 0) && (this.state.password.length !==0))
     {  	this.setState(({correctForm: true}));
+        this.checkForMail();
     }
     else {this.setState(({correctForm: false}));}
   };
 
   closeDialog = () => {
     this.setState(({open: false}));
+    // this.setState(({mail: ''}));
   };
 
   render() {
