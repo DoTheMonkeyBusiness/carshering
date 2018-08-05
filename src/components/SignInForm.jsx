@@ -13,10 +13,9 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Grid from '@material-ui/core/Grid';
 import Style from '../containers/registration.sass';
-import RegistrationController from  '../controllers/RegistrationController';
+import ErrorDialog from  '../components/ErrorDialog';
 import {whyDidYouUpdate} from 'why-did-you-update';
 import {Link} from 'react-router-dom';
-import { browserHistory } from 'react-router'
 
 const styles = theme => ({
   root: {
@@ -89,25 +88,15 @@ class InputAdornments extends PureComponent {
     const usersMail = Object.keys(userList).map(c => {
       return (userList[c].email)
     });
-    if (usersMail.indexOf(this.state.mail) !== -1){
-      console.log('!!!',userList[userList.indexOf(this.state.mail)]);
-      if (usersMail[usersMail.indexOf(this.state.mail)].password === this.state.password){
-       this.setState(({correctForm: true}));
-       console.log('hi');
-       console.log(browserHistory.push('/account'));
-       browserHistory.push('/account')
-     }
+    if (usersMail.indexOf(this.state.mail) !== -1 && userList[usersMail.indexOf(this.state.mail)].password === this.state.password){
+        this.setState(({correctForm: true}));
+        document.getElementById('linkToAccount').click();
+      sessionStorage.setItem('auth', userList[usersMail.indexOf(this.state.mail)].id);
+
     }
     else {
-      console.log('!!!',userList[userList.indexOf(this.state.mail)]);
       this.setState(({correctForm: false, open: true}));
     }
-  };
-
-  goToAccount = () => {
-    console.log('hi');
-    console.log(browserHistory.push('/account'));
-    browserHistory.push('/account')
   };
 
   checkCorrectness = () => {
@@ -173,11 +162,11 @@ class InputAdornments extends PureComponent {
           <Grid container justify="center">
             <Grid item xs={4}>
               <Button className={Style.formButton} onClick={this.checkCorrectness}>Submit</Button>
-               <Link to={'/account'} id="linkToAccount">hi</Link>
+               <Link to={'/account'} id="linkToAccount"/>
             </Grid>
           </Grid>
         </form>
-        <div><RegistrationController mailExists={this.state.mailExists} mail={this.state.mail} open={this.state.open} correctForm={this.state.correctForm} closeDialog={this.closeDialog}/></div>
+        <div><ErrorDialog open={this.state.open} closeDialog={this.closeDialog}/></div>
       </div>
     );
   }
