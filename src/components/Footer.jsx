@@ -7,7 +7,7 @@ import 'styles/base/_main.sass'; // Global styles
 import 'styles/base/_common.sass';  // Global styles
 import Style from './footer.sass';  // Css-module styles
 import Icon from '@material-ui/icons/contacts';
-import theme from './Theme';
+import theme from '../theme/Theme';
 const Footer = () => (
   <div>
     <MuiThemeProvider theme={theme}>
@@ -16,9 +16,9 @@ const Footer = () => (
     <Grid container={true}>
 
       <Grid container>
-        <Grid item xs={9}><img className={Style.image_padding} src={label}/></Grid>
+        <Grid item xs={9}><img className={Style.logo_padding} src={label}/></Grid>
         <Grid item xs={3}>
-        <Grid container direction="column" justify="flex-end">
+        <Grid container direction="column" alignContent="flex-end">
           <Grid item xs={12} className={Style.footer_padding}><div><Icon className={Style.image_padding} color="secondary"/><a href="https://github.com/DoTheMonkeyBusiness/carshering" className={Style.footer_href}>my github</a></div></Grid>
           <br/>
           <Grid item xs={12}><div><Icon className={Style.image_padding} color="secondary" /><a href="https://vk.com/maksim.nasalevich" className={Style.footer_href}> my vk</a></div></Grid>

@@ -4,7 +4,7 @@ import 'styles/base/_main.sass'; // Global styles
 import 'styles/base/_common.sass';  // Global styles
 import Style from './registration.sass';  // Css-module styles
 import Grid from '@material-ui/core/Grid';
-import theme from '../components/Theme';
+import theme from '../theme/Theme';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import RegistrationForm from '../components/RegistrationForm';
 import {connect} from 'react-redux';

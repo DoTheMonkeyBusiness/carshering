@@ -11,6 +11,7 @@ import SignIn from './containers/SignIn';
 import Registration from './containers/Registration';
 import Admin from './containers/Admin';
 import Account from './containers/Account';
+import Information from './components/AccountInformation';
 import Store from './store'
 window.state = Store;
 
@@ -26,6 +27,7 @@ const Routes = () => (
 			<Route path="/registration" component={Registration}/>
 			<Route path="/admin" component={Admin}/>
 			<Route path="/account" component={Account}/>
+      <Route path="/account/:information" component={Information}/>
 		</div>
     </Provider>
 	</Router>

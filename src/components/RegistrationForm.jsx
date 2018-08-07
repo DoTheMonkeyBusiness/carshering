@@ -11,11 +11,11 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import Grid from '@material-ui/core/Grid';
 import Style from '../containers/registration.sass';
 import RegistrationController from  '../controllers/RegistrationController';
 import {whyDidYouUpdate} from 'why-did-you-update';
 import Store from '../store';
+import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
 	root: {

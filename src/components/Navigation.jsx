@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import '../../node_modules/normalize.css/normalize.css';
@@ -10,51 +10,67 @@ import label from '../images/labe.png';
 import Hidden from '@material-ui/core/Hidden';
 import withWidth from '@material-ui/core/withWidth';
 import SimpleMenu from './../containers/Menu';
-import theme from './Theme';
+import theme from '../theme/Theme';
 
 
 
 
 
+class Navigation extends PureComponent {
 
-const Navigation = () => (
-	<div>
-		<Grid container={true}>
-			<MuiThemeProvider theme={theme}>
-				<AppBar position="static"  color="primary">
-					<Toolbar>
-						<Grid item xs={4}>
-							<img src={label}/>
-						</Grid>
-						<Hidden only={['xs', 'sm']}>
-							<Grid item xs={2}>
-								<Button variant="contained" color="secondary" component={Link} to="/">Home</Button>
-							</Grid>
+  removeStorage = () => {
+    localStorage.removeItem('auth');
+  };
 
-							<Grid item xs={2}>
-								<Button variant="contained" color="secondary" component={Link} to="/about">About</Button>
-							</Grid>
-							<Grid item xs={2}>
-								<Button variant="contained" color="secondary" component={Link} to="/sample">Sample</Button>
-							</Grid>
-							<Grid item xs={2}>
-								<div>
-                  {sessionStorage.getItem('auth')? <Button size="large" color="secondary" component={Link} to="/account">Account</Button> :<Button size="large" color="secondary" component={Link} to="/sign-in">Sign-in</Button>}
-									<Button size="large" color="secondary" component={Link} to="/registration">Registration</Button>
-								</div>
-							</Grid>
-						</Hidden>
-						<Hidden mdUp>
-							<Grid container justify="flex-end">
-								<SimpleMenu/>
-							</Grid>
-						</Hidden>
-					</Toolbar>
-				</AppBar>
 
-			</MuiThemeProvider>
-		</Grid>
-	</div>
-);
+  render() {
+    return(
+    <div>
+      <Grid container={true}>
+        <MuiThemeProvider theme={theme}>
+          <AppBar position="static" color="primary">
+            <Toolbar>
+              <Grid item xs={4}>
+                <img src={label}/>
+              </Grid>
+              <Hidden only={['xs', 'sm']}>
+                <Grid item xs={2}>
+                  <Button variant="contained" color="secondary" component={Link} to="/">Home</Button>
+                </Grid>
+
+                <Grid item xs={2}>
+                  <Button variant="contained" color="secondary" component={Link} to="/about">About</Button>
+                </Grid>
+                <Grid item xs={2}>
+                  <Button variant="contained" color="secondary" component={Link} to="/sample">Sample</Button>
+                </Grid>
+                {}
+                <Grid item xs={2}>
+                  {
+                    (location.pathname === '/account') ? (
+                      <Button size="large" color="secondary" onClick={this.removeStorage} component={Link} to="/">Log-Out</Button>) : (
+                      <div>
+                        {localStorage.getItem('auth') ?
+                          <Button size="large" color="secondary" component={Link} to="/account">Account</Button> :
+                          <Button size="large" color="secondary" component={Link} to="/sign-in">Sign-in</Button>}
+                        <Button size="large" color="secondary" component={Link} to="/registration">Registration</Button>
+                      </div>)
+                  }
+                </Grid>
+              </Hidden>
+              <Hidden mdUp>
+                <Grid container justify="flex-end">
+                  <SimpleMenu/>
+                </Grid>
+              </Hidden>
+            </Toolbar>
+          </AppBar>
+
+        </MuiThemeProvider>
+      </Grid>
+    </div>
+  );
+  }
+}
 
 export default withWidth()(Navigation);

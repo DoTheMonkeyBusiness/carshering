@@ -15,7 +15,7 @@ import Grid from '@material-ui/core/Grid';
 import Style from '../containers/registration.sass';
 import ErrorDialog from  '../components/ErrorDialog';
 import {whyDidYouUpdate} from 'why-did-you-update';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -35,6 +35,7 @@ const styles = theme => ({
 
 whyDidYouUpdate(React);
 class InputAdornments extends PureComponent {
+
   constructor(){
     super();
 
@@ -90,8 +91,8 @@ class InputAdornments extends PureComponent {
     });
     if (usersMail.indexOf(this.state.mail) !== -1 && userList[usersMail.indexOf(this.state.mail)].password === this.state.password){
         this.setState(({correctForm: true}));
-        document.getElementById('linkToAccount').click();
-      sessionStorage.setItem('auth', userList[usersMail.indexOf(this.state.mail)].id);
+        this.props.history.push('/account');
+        localStorage.setItem('auth', userList[usersMail.indexOf(this.state.mail)].id);
 
     }
     else {
@@ -178,4 +179,4 @@ InputAdornments.propTypes = {
 
 
 
-export default withStyles(styles)(InputAdornments);
+export default withRouter(withStyles(styles)(InputAdornments));
