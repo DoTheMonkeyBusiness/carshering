@@ -18,9 +18,19 @@ import theme from '../theme/Theme';
 
 class Navigation extends PureComponent {
 
+  constructor(){
+    super();
+
+    this.state = {
+      regex: /(\/account)/
+    }
+  }
+
   removeStorage = () => {
     localStorage.removeItem('auth');
   };
+
+
 
 
   render() {
@@ -47,7 +57,7 @@ class Navigation extends PureComponent {
                 {}
                 <Grid item xs={2}>
                   {
-                    (location.pathname === '/account') ? (
+                    (location.pathname.search(this.state.regex) !== -1) ? (
                       <Button size="large" color="secondary" onClick={this.removeStorage} component={Link} to="/">Log-Out</Button>) : (
                       <div>
                         {localStorage.getItem('auth') ?

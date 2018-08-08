@@ -37,7 +37,7 @@ class Registration extends Component {
 
 const mapStateToProps = (State) => {
   return {
-    users: State.userReducer.users
+    users: State.usersReducer.users
   }
 }
 const mapDispatchToProps = (dispatch) => {

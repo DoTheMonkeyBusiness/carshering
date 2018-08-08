@@ -1,7 +1,7 @@
 import usersList from '../normalized/normalizeUsers'
 import constants from '../constants'
 
-const userReducer = (state = usersList.entities, action) => {
+const usersReducer = (state = usersList.entities, action) => {
   switch(action.type) {
     case constants.ADD_NEW_USER:
       return {
@@ -22,4 +22,4 @@ const userReducer = (state = usersList.entities, action) => {
 
 };
 
-export default userReducer
+export default usersReducer

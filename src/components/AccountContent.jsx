@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -12,19 +12,18 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { mailFolderListItems, otherMailFolderListItems } from './AccountFolderListItems';
+import { mailFolderListItems, otherMailFolderListItems } from './AccountComponents/AccountFolderListItems';
 import Theme from '../theme/Theme';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 430,
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
@@ -86,9 +85,9 @@ const styles = theme => ({
   },
 });
 
-class MiniDrawer extends PureComponent {
+class MiniDrawer extends Component {
   state = {
-    open: false,
+    open: true,
   };
 
 
@@ -103,8 +102,7 @@ class MiniDrawer extends PureComponent {
 
   render() {
     const { classes, theme } = this.props;
-    console.log('batya',this.props);
-    console.log(this.props.children);
+    console.log('person',this.props.person);
     return (
       <div className={classes.root}>
         <MuiThemeProvider theme={Theme}>
@@ -124,7 +122,7 @@ class MiniDrawer extends PureComponent {
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" noWrap>
-              {/*Mini variant drawer*/}
+              Your Account
             </Typography>
           </Toolbar>
         </AppBar>
@@ -147,7 +145,7 @@ class MiniDrawer extends PureComponent {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Typography noWrap id="context">{this.props.children}</Typography>
+          <div>{this.props.children}</div>
         </main>
           </Grid>
         </MuiThemeProvider>
