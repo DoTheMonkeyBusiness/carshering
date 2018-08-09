@@ -4,7 +4,7 @@ import constants from '../constants'
 const usersReducer = (state = usersList.entities, action) => {
   switch(action.type) {
     case constants.ADD_NEW_USER:
-      return {
+      return ({
         ...state,
         users: {
           ...state.users,
@@ -14,7 +14,14 @@ const usersReducer = (state = usersList.entities, action) => {
           password: action.userPassword
           }
         }
-        };
+      });
+    case constants.GET_USER:
+      return ({
+        ...state,
+        users: {
+          ...state.users,
+        }
+      });
     default:
       return state
   }

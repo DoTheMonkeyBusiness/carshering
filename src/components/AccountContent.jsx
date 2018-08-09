@@ -86,11 +86,13 @@ const styles = theme => ({
 });
 
 class MiniDrawer extends Component {
-  state = {
-    open: true,
-  };
 
-
+  constructor() {
+    super();
+    this.state = {
+      open: true
+    };
+  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });

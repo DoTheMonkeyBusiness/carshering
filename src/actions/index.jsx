@@ -12,9 +12,9 @@ export const addNewUser = ({userID, userMail, userPassword}) => {
   }
 };
 
-export const disconnectedUser = (userID) => {
+export const getUser = (userID) => {
   return {
-    type: constants.DISCONNECTED_USER,
+    type: constants.GET_USER,
     userID,
   }
 };

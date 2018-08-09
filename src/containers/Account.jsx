@@ -6,8 +6,8 @@ import '../../node_modules/normalize.css/normalize.css';
 import 'styles/base/_main.sass'  // Global styles
 import 'styles/base/_common.sass'  // Global styles
 import AccountContent from '../components/AccountContent';
-// import {addNewUser} from '../actions';
-// import {bindActionCreators} from 'redux/index';
+import {getUser} from '../actions';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 class Account extends Component {
@@ -18,7 +18,7 @@ render() {
   return(
   <div>
     <Navigation/>
-    <AccountContent person={this.props.person} children={this.props.children}/>
+    <AccountContent person={this.props.person} children={this.props.children} getUser={this.props.getUser}/>
     <Footer/>
   </div>
   );
@@ -27,13 +27,12 @@ render() {
 
 const mapStateToProps = (State) => {
   return {
-    person: State.personReducer
+    person: State.usersReducer.users[localStorage.getItem('auth')]
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-     // addNewUser: bindActionCreators(addNewUser, dispatch)
-    dispatch
+    getUser: bindActionCreators(getUser, dispatch)
   }
 }
 

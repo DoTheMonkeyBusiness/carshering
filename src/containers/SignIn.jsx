@@ -7,8 +7,6 @@ import Grid from '@material-ui/core/Grid';
 import theme from '../theme/Theme';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import {connect} from 'react-redux';
-import { bindActionCreators } from 'redux';
-import {addNewUser} from '../actions';
 import SignInForm from '../components/SignInForm'
 
 class Registration extends Component {
@@ -42,7 +40,7 @@ const mapStateToProps = (State) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    addNewUser: bindActionCreators(addNewUser, dispatch)
+     dispatch
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Registration);

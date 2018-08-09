@@ -1,10 +1,7 @@
 import { combineReducers } from 'redux'
 import usersReducer from './UsersReducer'
-import personReducer from './PersonReducer'
-
 const chatReducer = combineReducers({
-  usersReducer,
-  personReducer
+  usersReducer
 })
 
 export default chatReducer
