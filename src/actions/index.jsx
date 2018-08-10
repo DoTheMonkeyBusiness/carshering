@@ -3,7 +3,6 @@ import constants from '../constants'
 
 export const addNewUser = ({userID, userMail, userPassword}) => {
 
-  console.log('!!!!!!!!!!',(userID, userMail, userPassword));
   return {
     type: constants.ADD_NEW_USER,
     userID,
@@ -14,7 +13,7 @@ export const addNewUser = ({userID, userMail, userPassword}) => {
 
 export const getUser = (userID) => {
   return {
-    type: constants.GET_USER,
+    type: constants.UPDATE_DRIVERS_LICENSE,
     userID,
   }
 };

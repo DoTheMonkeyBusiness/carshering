@@ -16,6 +16,8 @@ import Information from './components/AccountComponents/AccountPersonalData';
 import Advertisements from './components/AccountComponents/AccountAdvertisements';
 import Messages from './components/AccountComponents/AccountMessages';
 import NewAdvertisements from './components/AccountComponents/AccountNewAdvertisement';
+import UpdateAccount from './components/AccountComponents/AccountUpdate';
+import DeleteAccount from './components/AccountComponents/AccountDelete';
 import Store from './store'
 window.state = Store;
 
@@ -36,6 +38,8 @@ const Routes = () => (
       <Route path="/account/advertisements" component={Advertisements}/>
       <Route path="/account/messages" component={Messages}/>
       <Route path="/account/new-advertisement" component={NewAdvertisements}/>
+      <Route path="/account/update" component={UpdateAccount}/>
+      <Route path="/account/delete" component={DeleteAccount}/>
       </Account>
       </Switch>
 		</div>

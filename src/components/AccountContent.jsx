@@ -16,15 +16,19 @@ import { mailFolderListItems, otherMailFolderListItems } from './AccountComponen
 import Theme from '../theme/Theme';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Style from './AccountComponents/AccountComponents.sass';
 
 
 
-const drawerWidth = 300;
+
+
+const drawerWidth = 250;
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     zIndex: 1,
+    height: 800,
     overflow: 'hidden',
     position: 'relative',
     display: 'flex',
@@ -106,7 +110,7 @@ class MiniDrawer extends Component {
     const { classes, theme } = this.props;
     console.log('person',this.props.person);
     return (
-      <div className={classes.root}>
+      <div className={classNames(classes.root, Style.account_content)}>
         <MuiThemeProvider theme={Theme}>
           <Grid container={true}>
         <AppBar
@@ -128,6 +132,7 @@ class MiniDrawer extends Component {
             </Typography>
           </Toolbar>
         </AppBar>
+
         <Drawer
           variant="permanent"
           classes={{
@@ -149,6 +154,7 @@ class MiniDrawer extends Component {
           <div className={classes.toolbar} />
           <div>{this.props.children}</div>
         </main>
+
           </Grid>
         </MuiThemeProvider>
       </div>
