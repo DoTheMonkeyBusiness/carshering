@@ -1,5 +1,4 @@
-import React from 'react';
-import createReactClass from'create-react-class';
+import React, {PureComponent} from 'react';
 import {Link} from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import 'styles/base/_main.sass'  // Global styles
@@ -8,22 +7,30 @@ import '../../node_modules/normalize.css/normalize.css';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-const SimpleMenu = createReactClass({
 
-  getInitialState(){
-    return{
+
+
+class SimpleMenu extends PureComponent{
+
+  constructor(){
+    super();
+
+    this.state={
       anchorEl: null
     };
-  },
+
+  }
 
 
-  handleClick(event) {
+  handleClick = (event) => {
+    console.log(event.currentTarget);
     this.setState({ anchorEl: event.currentTarget });
-  },
+    console.log(event);
+  };
 
-  handleClose(){
+  handleClose = () => {
     this.setState({ anchorEl: null });
-  },
+  };
 
   render() {
     const { anchorEl } = this.state;
@@ -50,6 +57,6 @@ const SimpleMenu = createReactClass({
       </div>
     );
   }
-});
+}
 
 export default SimpleMenu;

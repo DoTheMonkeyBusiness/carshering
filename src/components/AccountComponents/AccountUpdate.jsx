@@ -1,21 +1,26 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import UpdateLicense from './AccountUpdateLicense';
 import UpdatePassport from './AccountUpdatePassport';
 import UpdateUserData from './AccountUpdateUserData';
+import Style from './AccountComponents.sass';
+// import {ThemeContext} from '../../context';
 
-function TabContainer(props) {
+
+const TabContainer = (props) => {
   return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
+    <div style={{ padding: 8 * 3 }}>
+      <div className={Style.account_form}>
       {props.children}
-    </Typography>
+      </div>
+    </div>
   );
-}
+};
 
 TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
@@ -28,10 +33,15 @@ const styles = theme => ({
   },
 });
 
-class SimpleTabs extends React.Component {
-  state = {
-    value: 0,
-  };
+class SimpleTabs extends PureComponent {
+
+  constructor() {
+    super();
+    this.state = {
+      value: 0,
+    };
+  }
+
 
   handleChange = (event, value) => {
     this.setState({ value });
@@ -40,9 +50,12 @@ class SimpleTabs extends React.Component {
   render() {
     const { classes } = this.props;
     const { value } = this.state;
+    const { person } = this.props.location.state;
+    console.log('update', person );
 
     return (
       <div className={classes.root}>
+        {/*<ThemeContext.Consumer>*/}
         <AppBar position="static">
           <Tabs value={value} onChange={this.handleChange}>
             <Tab label="Driver's License" />
@@ -50,9 +63,10 @@ class SimpleTabs extends React.Component {
             <Tab label="User Data" />
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer><UpdateLicense/></TabContainer>}
-        {value === 1 && <TabContainer><UpdatePassport/></TabContainer>}
-        {value === 2 && <TabContainer><UpdateUserData/></TabContainer>}
+        {value === 0 && <TabContainer><UpdateLicense person={person}/></TabContainer>}
+        {value === 1 && <TabContainer><UpdatePassport person={person}/></TabContainer>}
+        {value === 2 && <TabContainer><UpdateUserData person={person}/></TabContainer>}
+        {/*</ThemeContext.Consumer>*/}
       </div>
     );
   }
@@ -61,5 +75,6 @@ class SimpleTabs extends React.Component {
 SimpleTabs.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
 
 export default withStyles(styles)(SimpleTabs);

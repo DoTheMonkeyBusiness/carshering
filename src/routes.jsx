@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Provider } from 'react-redux'
 import {
 	BrowserRouter as Router,
@@ -22,29 +22,33 @@ import Store from './store'
 window.state = Store;
 
 
-const Routes = () => (
-	<Router>
-    <Provider key={ module.hot ? Date.now() : Store} store={Store}>
-		<div>
-      <Switch>
-			<Route exact path="/" component={Home}/>
-			<Route path="/about" component={About}/>
-			<Route path="/sample" component={Sample}/>
-			<Route path="/sign-in" component={SignIn}/>
-			<Route path="/registration" component={Registration}/>
-			<Route path="/admin" component={Admin}/>
-			<Account>
-      <Route path="/account/information" component={Information}/>
-      <Route path="/account/advertisements" component={Advertisements}/>
-      <Route path="/account/messages" component={Messages}/>
-      <Route path="/account/new-advertisement" component={NewAdvertisements}/>
-      <Route path="/account/update" component={UpdateAccount}/>
-      <Route path="/account/delete" component={DeleteAccount}/>
-      </Account>
-      </Switch>
-		</div>
-    </Provider>
-	</Router>
-);
+class Routes extends Component{
+  render() {
+    return(
+    <Router>
+      <Provider key={module.hot ? Date.now() : Store} store={Store}>
+        <div>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/about" component={About}/>
+            <Route path="/sample" component={Sample}/>
+            <Route path="/sign-in" component={SignIn}/>
+            <Route path="/registration" component={Registration}/>
+            <Route path="/admin" component={Admin}/>
+            <Account>
+              <Route path="/account/information" component={Information}/>
+              <Route path="/account/advertisements" component={Advertisements}/>
+              <Route path="/account/messages" component={Messages}/>
+              <Route path="/account/new-advertisement" component={NewAdvertisements}/>
+              <Route path="/account/update" component={UpdateAccount}/>
+              <Route path="/account/delete" component={DeleteAccount}/>
+            </Account>
+          </Switch>
+        </div>
+      </Provider>
+    </Router>
+    );
+  }
+}
 
 export default Routes;

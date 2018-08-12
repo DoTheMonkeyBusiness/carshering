@@ -7,9 +7,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import label from '../images/labe.png';
-import Hidden from '@material-ui/core/Hidden';
+// import Hidden from '@material-ui/core/Hidden';
 import withWidth from '@material-ui/core/withWidth';
-import SimpleMenu from './../containers/Menu';
+// import SimpleMenu from './../containers/Menu';
 import theme from '../theme/Theme';
 
 
@@ -43,7 +43,7 @@ class Navigation extends PureComponent {
               <Grid item xs={4}>
                 <img src={label}/>
               </Grid>
-              <Hidden only={['xs', 'sm']}>
+              {/*<Hidden only={['xs', 'sm']}>*/}
                 <Grid item xs={2}>
                   <Button variant="contained" color="secondary" component={Link} to="/">Home</Button>
                 </Grid>
@@ -67,12 +67,12 @@ class Navigation extends PureComponent {
                       </div>)
                   }
                 </Grid>
-              </Hidden>
-              <Hidden mdUp>
-                <Grid container justify="flex-end">
-                  <SimpleMenu/>
-                </Grid>
-              </Hidden>
+              {/*</Hidden>*/}
+              {/*<Hidden mdUp>*/}
+                {/*<Grid container justify="flex-end">*/}
+                  {/*<SimpleMenu/>*/}
+                {/*</Grid>*/}
+              {/*</Hidden>*/}
             </Toolbar>
           </AppBar>
 

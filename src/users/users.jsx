@@ -19,7 +19,7 @@ export const userList = {
             id: '3',
             email: '123@gmail.com',
             password: '123',
-            licence: 'AA3 12122',
+            license: 'AA3 12122',
             issuedBy: 'grodno rovd',
             whenIssued: '20.07.2017',
             validUntil: '20.07.2027',

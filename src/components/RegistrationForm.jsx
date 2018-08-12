@@ -123,12 +123,12 @@ class InputAdornments extends PureComponent {
   				<Grid item xs={12}>
   					<FormControl
   						className={classNames(classes.margin, classes.withoutLabel, classes.textField, Style.inputStyle)}
-  						aria-describedby="adornment-mail"
+  						aria-describedby="registration-mail"
   					>
-  						<InputLabel htmlFor="adornment-mail">Mail</InputLabel>
+  						<InputLabel htmlFor="registration-mail">Mail</InputLabel>
   						<Input
   							error={this.state.error}
-  							id="adornment-mail"
+  							id="registration-mail"
   							onChange={this.handleChange('mail')}
   							onClick={this.setHelperHidden}
   							onBlur={this.validMail}
@@ -138,9 +138,9 @@ class InputAdornments extends PureComponent {
   				</Grid>
   				<Grid item xs={12}>
   					<FormControl className={classNames(classes.margin, classes.textField, Style.inputStyle)}>
-  						<InputLabel htmlFor="adornment-password">Password</InputLabel>
+  						<InputLabel htmlFor="registration-password">Password</InputLabel>
   						<Input
-  							id="adornment-password"
+  							id="registration-password"
   							type={this.state.showPassword ? 'text' : 'password'}
   							value={this.state.password}
                 onBlur={this.checkPassword}

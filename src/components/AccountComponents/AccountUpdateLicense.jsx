@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 // import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Style from './AccountComponents.sass';
 import classNames from 'classnames';
@@ -24,7 +24,7 @@ const styles = theme => ({
   },
 });
 
-class UpdateLicense extends Component {
+class UpdateLicense extends PureComponent {
 
   constructor(){
     super();
@@ -34,34 +34,56 @@ class UpdateLicense extends Component {
       age: '',
       multiline: 'Controlled',
       currency: 'EUR',
+      license: null,
+      issuedBy: null,
+      whenIssued: null,
+      validUntil: null,
+      licenseCategory: null
     };
   }
 
-  handleChange = name => event => {
+  componentWillMount(){
     this.setState({
-      [name]: event.target.value,
-    });
+      license: this.props.person.license,
+      issuedBy: this.props.person.issuedBy,
+      whenIssued: this.props.person.whenIssued,
+      validUntil: this.props.person.validUntil,
+      licenseCategory: this.props.person.licenseCategory,})
+  }
+
+  handleSubmit = () => {
+    console.log('hello');
   };
+
+
+  // handleChange = name => event => {
+  //   this.setState({
+  //     [name]: event.target.value,
+  //   });
+  // };
 
     render() {
       const { classes } = this.props;
-        return (
 
-            <div className={Style.account_form}>
+      console.log('license',this.props.person.license);
+      console.log('state',this.state);
+      return (
+
+            <div>
               <h3 className={Style.account_head}>Driver's license</h3>
               <div className={classNames(classes.container, Style.account_block)}>
                     <TextField
                       id="licenseSeriesAndNumber"
                       label="License Series and Number"
                       className={classes.textField}
-                      onChange={this.handleChange('License Series and Number')}
+                      // onChange={this.handleChange('License Series and Number')}
                       margin="normal"
                     />
                     <TextField
                       id="licenseIssuedBy"
                       label="Issued by"
                       className={classes.textField}
-                      onChange={this.handleChange('Issued by')}
+                      // onChange={this.handleChange('Issued by')}
                       margin="normal"
                     />
                     <TextField
@@ -69,7 +91,6 @@ class UpdateLicense extends Component {
                       label="When issued"
                       type="date"
                       margin="normal"
-                      defaultValue="1-1-2018"
                       className={classes.textField}
                       InputLabelProps={{
                         shrink: true,
@@ -80,7 +101,6 @@ class UpdateLicense extends Component {
                       label="Valid until"
                       type="date"
                       margin="normal"
-                      defaultValue="1-1-2018"
                       className={classes.textField}
                       InputLabelProps={{
                         shrink: true,
@@ -90,10 +110,10 @@ class UpdateLicense extends Component {
                       id="licenseCategory"
                       label="license category"
                       className={classes.textField}
-                      onChange={this.handleChange('license category')}
+                      // onChange={this.handleChange('license category')}
                       margin="normal"
                     />
-                <Button className={Style.account_button} variant="contained" color="primary">Submit</Button>
+                <Button className={Style.account_button} variant="contained" color="primary" onClick={this.handleSubmit}>Submit</Button>
 
               </div>
 

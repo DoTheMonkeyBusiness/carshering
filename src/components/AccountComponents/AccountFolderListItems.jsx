@@ -12,8 +12,9 @@ import ReportIcon from '@material-ui/icons/Report';
 import {Link} from 'react-router-dom';
 
 
-export const mailFolderListItems = (
+export const mailFolderListItems = (props) => (
   <div>
+    {console.log('.....................')}
     <ListItem button component={Link} to="/account/information">
       <ListItemIcon>
         <PersonIcon />
@@ -41,9 +42,11 @@ export const mailFolderListItems = (
   </div>
 );
 
-export const otherMailFolderListItems = (
+export const otherMailFolderListItems = (props) => (
   <div>
-    <ListItem button component={Link} to="/account/update">
+    <ListItem button component={Link}
+              to={{pathname: '/account/update',
+              state: {person: props}}} >
       <ListItemIcon>
         <RefreshIcon />
       </ListItemIcon>

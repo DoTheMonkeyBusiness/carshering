@@ -17,12 +17,11 @@ import Theme from '../theme/Theme';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Style from './AccountComponents/AccountComponents.sass';
-
-
-
+// import {ThemeContext} from '../context';
 
 
 const drawerWidth = 250;
+
 
 const styles = theme => ({
   root: {
@@ -96,7 +95,14 @@ class MiniDrawer extends Component {
     this.state = {
       open: true
     };
+
+    // this.person = () => {
+    //   this.setState({
+    //     person: this.props.person
+    //   });
+    // };
   }
+
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -109,6 +115,7 @@ class MiniDrawer extends Component {
   render() {
     const { classes, theme } = this.props;
     console.log('person',this.props.person);
+    console.log('re-render-Content');
     return (
       <div className={classNames(classes.root, Style.account_content)}>
         <MuiThemeProvider theme={Theme}>
@@ -146,12 +153,13 @@ class MiniDrawer extends Component {
             </IconButton>
           </div>
           <Divider />
-          <List>{mailFolderListItems}</List>
+          <List>{mailFolderListItems(this.props.person)}</List>
           <Divider />
-          <List>{otherMailFolderListItems}</List>
+          <List>{otherMailFolderListItems(this.props.person)}</List>
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
+          {/*<ThemeContext.Provider person={this.props.person}>{this.props.children}</ThemeContext.Provider>*/}
           <div>{this.props.children}</div>
         </main>
 
@@ -166,5 +174,7 @@ MiniDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
+
+
 
 export default withStyles(styles, { withTheme: true })(MiniDrawer);

@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 // import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Style from './AccountComponents.sass';
 import classNames from 'classnames';
@@ -24,7 +24,7 @@ const styles = theme => ({
   },
 });
 
-class MyComponents extends Component {
+class MyComponents extends PureComponent {
 
   constructor(){
     super();
@@ -37,31 +37,33 @@ class MyComponents extends Component {
     };
   }
 
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
+  // handleChange = name => event => {
+  //   this.setState({
+  //     [name]: event.target.value,
+  //   });
+  // };
 
   render() {
     const { classes } = this.props;
+    console.log('re-render1');
+
     return (
 
-      <div className={Style.account_form}>
+      <div>
         <h3 className={Style.account_head}>Passport Data</h3>
         <div className={classNames(classes.container, Style.account_block)}>
               <TextField
                 id="name"
                 label="Name"
                 className={classes.textField}
-                onChange={this.handleChange('Name')}
+                // onChange={this.handleChange('Name')}
                 margin="normal"
               />
               <TextField
                 id="surname"
                 label="Surname"
                 className={classes.textField}
-                onChange={this.handleChange('Surname')}
+                // onChange={this.handleChange('Surname')}
                 margin="normal"
               />
 
@@ -69,14 +71,14 @@ class MyComponents extends Component {
                 id="passportSeriesAndNumber"
                 label="Passport Series and Number"
                 className={classes.textField}
-                onChange={this.handleChange('Passport Series and Number')}
+                // onChange={this.handleChange('Passport Series and Number')}
                 margin="normal"
               />
               <TextField
                 id="passportIssuedBy"
                 label="Issued by"
                 className={classes.textField}
-                onChange={this.handleChange('Issued by')}
+                // onChange={this.handleChange('Issued by')}
                 margin="normal"
               />
               <TextField
@@ -84,14 +86,12 @@ class MyComponents extends Component {
                 label="When issued"
                 margin="normal"
                 type="date"
-                defaultValue="1-1-2018"
                 className={classes.textField}
                 InputLabelProps={{
                   shrink: true,
                 }}
               />
           <Button className={Style.account_button} variant="contained" color="primary">Submit</Button>
-
         </div>
       </div>
     );

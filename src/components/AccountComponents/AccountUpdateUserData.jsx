@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 // import MenuItem from '@material-ui/core/MenuItem';
@@ -23,7 +23,7 @@ const styles = theme => ({
   },
 });
 
-class UpdateUserData extends Component {
+class UpdateUserData extends PureComponent {
 
   constructor(){
     super();
@@ -31,56 +31,60 @@ class UpdateUserData extends Component {
     this.state = {
       name: '',
       age: '',
+      photo: null,
       multiline: 'Controlled',
       currency: 'EUR',
     };
   }
+  // shouldComponentUpdate(nextProps, nextState){
+  //   return this.state.photo !== nextState.photo
+  // }
 
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
+
+  setPhoto = event => {
+    console.log('event',event.target.value);
   };
 
   render() {
     const { classes } = this.props;
+    console.log('re-render');
     return (
 
-      <div className={Style.account_form}>
+      <div>
         <h3 className={Style.account_head}>User Data</h3>
-        <div className={classNames(classes.container, Style.account_block)}>
+        <form className={classNames(classes.container, Style.account_block)}>
               <TextField
                 type="file"
-                id="photo"
+                id="userPhoto"
                 multiple accept="image/jpeg,image/png"
                 label="Photo"
+                onChange={this.setPhoto}
                 className={classes.textField}
                 margin="normal"
+
               />
               <TextField
-                id="phoneNumber"
+                id="userPhoneNumber"
                 label="Phone number"
                 className={classes.textField}
-                onChange={this.handleChange('Phone number')}
                 margin="normal"
               />
 
               <TextField
-                id="changeMail"
+                id="userChangeMail"
                 label="Change mail"
                 className={classes.textField}
-                onChange={this.handleChange('Change mail')}
+
                 margin="normal"
               />
               <TextField
-                id="changePassword"
+                id="userChangePassword"
                 label="Change password"
                 className={classes.textField}
-                onChange={this.handleChange('Change password')}
                 margin="normal"
               />
           <Button className={Style.account_button} variant="contained" color="primary">Submit</Button>
-        </div>
+        </form>
       </div>
     );
   }
