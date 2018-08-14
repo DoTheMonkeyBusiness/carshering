@@ -3,7 +3,7 @@ import MailExists from '../components/MailExists';
 import MailConfirm from '../components/MailConfirm';
 import ErrorDialog from '../components/ErrorDialog';
 
-class MyComponents extends PureComponent {
+class RegistrationController extends PureComponent {
     render() {
       if (this.props.correctForm) {
         return (
@@ -14,4 +14,4 @@ class MyComponents extends PureComponent {
     }
 }
 
-export default MyComponents
+export default RegistrationController

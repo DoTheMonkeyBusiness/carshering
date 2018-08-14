@@ -12,7 +12,7 @@ import ReportIcon from '@material-ui/icons/Report';
 import {Link} from 'react-router-dom';
 
 
-export const mailFolderListItems = (props) => (
+export const mailFolderListItems = (
   <div>
     <ListItem button component={Link} to="/account/information">
       <ListItemIcon>
@@ -42,14 +42,11 @@ export const mailFolderListItems = (props) => (
 );
 
 
-export const otherMailFolderListItems = (props, updateDriversLicense) => (
+export const otherMailFolderListItems = (
   <div>
-    {console.log('updateDriversLicense!!!',updateDriversLicense)    }
     <ListItem button
               component={Link}
-              to={{pathname: '/account/update',
-              state: {person: props, updateDriversLicense: updateDriversLicense}}}
-
+              to="/account/update"
     >
       <ListItemIcon>
         <RefreshIcon />

@@ -155,13 +155,12 @@ class MiniDrawer extends Component {
             </IconButton>
           </div>
           <Divider />
-          <List>{mailFolderListItems(this.props.person)}</List>
+          <List>{mailFolderListItems}</List>
           <Divider />
-          <List>{otherMailFolderListItems(this.props.person, this.props.updateDriversLicense, this.props.history)}</List>
+          <List>{otherMailFolderListItems}</List>
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          {/*<ThemeContext.Provider person={this.props.person}>{this.props.children}</ThemeContext.Provider>*/}
           <div>{this.props.children}</div>
         </main>
 

@@ -6,18 +6,13 @@ import '../../node_modules/normalize.css/normalize.css';
 import 'styles/base/_main.sass'  // Global styles
 import 'styles/base/_common.sass'  // Global styles
 import AccountContent from './AccountContent';
-import {updateDriversLicense} from '../actions';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {DriversLicenseContext} from '../context';
+
 
 
 class Account extends Component {
   constructor(){
     super();
-    // this.state = {
-    //   updateDriversLicense: this.props.updateDriversLicense
-    // };
+
   }
 
 render() {
@@ -27,22 +22,13 @@ render() {
   return(
   <div>
     <Navigation/>
-    <DriversLicenseContext.Provider value={this.props.updateDriversLicense}><AccountContent person={this.props.person} children={this.props.children} updateDriversLicense={this.props.updateDriversLicense}/></DriversLicenseContext.Provider>
+    <AccountContent children={this.props.children}/>
     <Footer/>
   </div>
   );
 }
 }
 
-const mapStateToProps = (State) => {
-  return {
-    person: State.usersReducer.users[localStorage.getItem('auth')]
-  }
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateDriversLicense: bindActionCreators(updateDriversLicense, dispatch)
-  }
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Account);
+
+export default Account;

@@ -11,7 +11,7 @@ export const addNewUser = ({userID, userMail, userPassword}) => {
   }
 };
 
-export const updateDriversLicense = (userID, license, issuedBy, whenIssued, validUntil, licenseCategory) => {
+export const updateDriversLicense = ({userID, license, issuedBy, whenIssued, validUntil, licenseCategory}) => {
   console.log('lookatme',(userID, license, issuedBy, whenIssued, validUntil, licenseCategory));
   return {
     type: constants.UPDATE_DRIVERS_LICENSE,
@@ -21,6 +21,28 @@ export const updateDriversLicense = (userID, license, issuedBy, whenIssued, vali
     whenIssued,
     validUntil,
     licenseCategory
+  }
+};
+export const updatePassportData = ({userID, name, surname, passportSeriesAndNumber, passportIssuedBy, passportIssuedDate}) => {
+  return {
+    type: constants.UPDATE_PASSPORT_DATA,
+    userID,
+    name,
+    surname,
+    passportSeriesAndNumber,
+    passportIssuedBy,
+    passportIssuedDate
+  }
+};
+export const updateUserData = ({userID, fileName, imagePreviewUrl, phoneNumber, mail, password}) => {
+  return {
+    type: constants.UPDATE_USER_DATA,
+    userID,
+    fileName,
+    imagePreviewUrl,
+    phoneNumber,
+    mail,
+    password
   }
 };
 

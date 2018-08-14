@@ -1,13 +1,11 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-// import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-// import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Style from './AccountComponents.sass';
 import classNames from 'classnames';
-import {DriversLicenseContext} from '../../context';
+import hocLoader from './AccountHocLoader'
 
 const styles = theme => ({
   container: {
@@ -40,7 +38,7 @@ class UpdateLicense extends PureComponent {
     };
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.setState({
       id: this.props.person.id,
       license: this.props.person.license,
@@ -51,9 +49,8 @@ class UpdateLicense extends PureComponent {
   }
 
   handleSubmit = () => {
-    console.log(this.state.updateDriversLicense);
 
-    this.state.updateDriversLicense({
+    this.props.updateDriversLicense({
       userID: this.state.id,
       license: this.state.license,
       issuedBy: this.state.issuedBy,
@@ -83,13 +80,9 @@ class UpdateLicense extends PureComponent {
 
     render() {
       const { classes } = this.props;
-      // const { license, issuedBy, whenIssued, validUntil, licenseCategory } = this.state;
-      console.log('!!!!!!!!!!!props!!!!!!!!!!',this.props.updateDriversLicense);
       return (
 
             <div>
-              <DriversLicenseContext.Consumer>
-                { updateDriversLicense => (this.setState({updateDriversLicense: updateDriversLicense})) }</DriversLicenseContext.Consumer>
               <h3 className={Style.account_head}>Driver's license</h3>
               <div className={classNames(classes.container, Style.account_block)}>
                     <TextField
@@ -152,4 +145,4 @@ UpdateLicense.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(UpdateLicense)
+export default hocLoader('person')(withStyles(styles)(UpdateLicense))

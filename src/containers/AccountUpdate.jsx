@@ -6,10 +6,12 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 // import Typography from '@material-ui/core/Typography';
 import UpdateLicense from '../components/AccountComponents/AccountUpdateLicense';
-import UpdatePassport from '../components/AccountComponents/AccountUpdatePassport';
+import UpdatePassport from '../components/AccountComponents/AccountUpdatePassportData';
 import UpdateUserData from '../components/AccountComponents/AccountUpdateUserData';
-import Style from '../components/AccountComponents/AccountComponents.sass';
-// import {ThemeContext} from '../../context';
+import Style from './Account.sass';
+import {connect} from 'react-redux';
+import {updateDriversLicense, updatePassportData, updateUserData} from '../actions';
+import {bindActionCreators} from 'redux';
 
 
 const TabContainer = (props) => {
@@ -50,10 +52,6 @@ class SimpleTabs extends PureComponent {
   render() {
     const { classes } = this.props;
     const { value } = this.state;
-    const { person, updateDriversLicense} = this.props.location.state;
-    console.log('----------updateDriversLicense-----',this.props);
-
-    console.log('update', person );
 
     return (
       <div className={classes.root}>
@@ -65,9 +63,9 @@ class SimpleTabs extends PureComponent {
             <Tab label="User Data" />
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer><UpdateLicense person={person} updateDriversLicense={updateDriversLicense}/></TabContainer>}
-        {value === 1 && <TabContainer><UpdatePassport person={person}/></TabContainer>}
-        {value === 2 && <TabContainer><UpdateUserData person={person}/></TabContainer>}
+        {value === 0 && <TabContainer><UpdateLicense person={this.props.person} updateDriversLicense={this.props.updateDriversLicense}/></TabContainer>}
+        {value === 1 && <TabContainer><UpdatePassport person={this.props.person} updatePassportData={this.props.updatePassportData}/></TabContainer>}
+        {value === 2 && <TabContainer><UpdateUserData person={this.props.person} updateUserData={this.props.updateUserData}/></TabContainer>}
         {/*</ThemeContext.Consumer>*/}
       </div>
     );
@@ -78,5 +76,17 @@ SimpleTabs.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
+const mapStateToProps = (State) => {
+  return {
+    person: State.usersReducer.users[localStorage.getItem('auth')]
+  }
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateDriversLicense: bindActionCreators(updateDriversLicense, dispatch),
+    updatePassportData: bindActionCreators(updatePassportData, dispatch),
+    updateUserData: bindActionCreators(updateUserData, dispatch),
+  }
+};
 
-export default withStyles(styles)(SimpleTabs);
+export default  connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SimpleTabs));

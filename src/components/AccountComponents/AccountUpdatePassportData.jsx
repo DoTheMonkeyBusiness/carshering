@@ -7,6 +7,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Style from './AccountComponents.sass';
 import classNames from 'classnames';
+import hocLoader from './AccountHocLoader'
+
 
 
 const styles = theme => ({
@@ -24,16 +26,18 @@ const styles = theme => ({
   },
 });
 
-class MyComponents extends PureComponent {
+class UpdatePassport extends PureComponent {
 
   constructor(){
     super();
 
     this.state = {
-      name: '',
-      age: '',
-      multiline: 'Controlled',
-      currency: 'EUR',
+      id: null,
+      name: null,
+      surname: null,
+      passportSeriesAndNumber: null,
+      passportIssuedBy: null,
+      passportIssuedDate: null,
     };
   }
 
@@ -43,10 +47,42 @@ class MyComponents extends PureComponent {
   //   });
   // };
 
+
+  componentWillMount(){
+    this.setState({
+      id: this.props.person.id,
+      name: this.props.person.name,
+      surname: this.props.person.surname,
+      passportSeriesAndNumber: this.props.person.passportSeriesAndNumber,
+      passportIssuedBy: this.props.person.passportIssuedBy,
+      passportIssuedDate: this.props.person.passportIssuedDate})
+  }
+
+
+  handleSubmit = () => {
+    this.props.updatePassportData({
+      userID: this.state.id,
+      name: this.state.name,
+      surname: this.state.surname,
+      passportSeriesAndNumber: this.state.passportSeriesAndNumber,
+      passportIssuedBy: this.state.passportIssuedBy,
+      passportIssuedDate: this.state.passportIssuedDate,
+    });
+  };
+
+
+  handleChangeState = (state) => (event) => {
+    (event.target.value !== '')?(
+      this.setState({
+        [state]: event.target.value,
+      })
+    ):(this.setState({
+      [state]: this.props.person[state],
+    }))
+  };
+
   render() {
     const { classes } = this.props;
-    console.log('re-render1');
-
     return (
 
       <div>
@@ -56,6 +92,7 @@ class MyComponents extends PureComponent {
                 id="name"
                 label="Name"
                 className={classes.textField}
+                onBlur={this.handleChangeState('name')}
                 // onChange={this.handleChange('Name')}
                 margin="normal"
               />
@@ -63,6 +100,7 @@ class MyComponents extends PureComponent {
                 id="surname"
                 label="Surname"
                 className={classes.textField}
+                onBlur={this.handleChangeState('surname')}
                 // onChange={this.handleChange('Surname')}
                 margin="normal"
               />
@@ -71,6 +109,7 @@ class MyComponents extends PureComponent {
                 id="passportSeriesAndNumber"
                 label="Passport Series and Number"
                 className={classes.textField}
+                onBlur={this.handleChangeState('passportSeriesAndNumber')}
                 // onChange={this.handleChange('Passport Series and Number')}
                 margin="normal"
               />
@@ -79,27 +118,29 @@ class MyComponents extends PureComponent {
                 label="Issued by"
                 className={classes.textField}
                 // onChange={this.handleChange('Issued by')}
+                onBlur={this.handleChangeState('passportIssuedBy')}
                 margin="normal"
               />
               <TextField
                 id="PassportIssuedDate"
-                label="When issued"
+                label="Issued Date"
                 margin="normal"
                 type="date"
                 className={classes.textField}
+                onChange={this.handleChangeState('passportIssuedDate')}
                 InputLabelProps={{
                   shrink: true,
                 }}
               />
-          <Button className={Style.account_button} variant="contained" color="primary">Submit</Button>
+          <Button className={Style.account_button} variant="contained" color="primary" onClick={this.handleSubmit}>Submit</Button>
         </div>
       </div>
     );
   }
 }
 
-MyComponents.propTypes = {
+UpdatePassport.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MyComponents)
+export default hocLoader('person')(withStyles(styles)(UpdatePassport))
