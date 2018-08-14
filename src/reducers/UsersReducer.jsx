@@ -15,11 +15,18 @@ const usersReducer = (state = usersList.entities, action) => {
           }
         }
       });
-    case constants.GET_USER:
+    case constants.UPDATE_DRIVERS_LICENSE:
       return ({
         ...state,
         users: {
           ...state.users,
+          [action.userID]: {
+            license: action.license,
+            issuedBy: action.issuedBy,
+            whenIssued: action.whenIssued,
+            validUntil: action.validUntil,
+            licenseCategory:  action.licenseCategory
+          }
         }
       });
     default:

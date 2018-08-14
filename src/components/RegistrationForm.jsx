@@ -116,8 +116,9 @@ class InputAdornments extends PureComponent {
 
   render() {
   	const { classes } = this.props;
+    console.log('!!!!!!!!!!!!!!!!!!',this.props.addNewUser);
 
-  	return (
+    return (
   		<div className={classes.root}>
   			<form>
   				<Grid item xs={12}>

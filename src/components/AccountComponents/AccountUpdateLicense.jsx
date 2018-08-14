@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Style from './AccountComponents.sass';
 import classNames from 'classnames';
-
+import {DriversLicenseContext} from '../../context';
 
 const styles = theme => ({
   container: {
@@ -30,10 +30,8 @@ class UpdateLicense extends PureComponent {
     super();
 
     this.state = {
-      name: '',
-      age: '',
-      multiline: 'Controlled',
-      currency: 'EUR',
+      updateDriversLicense:null,
+      id: null,
       license: null,
       issuedBy: null,
       whenIssued: null,
@@ -42,8 +40,9 @@ class UpdateLicense extends PureComponent {
     };
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.setState({
+      id: this.props.person.id,
       license: this.props.person.license,
       issuedBy: this.props.person.issuedBy,
       whenIssued: this.props.person.whenIssued,
@@ -52,7 +51,16 @@ class UpdateLicense extends PureComponent {
   }
 
   handleSubmit = () => {
-    console.log('hello');
+    console.log(this.state.updateDriversLicense);
+
+    this.state.updateDriversLicense({
+      userID: this.state.id,
+      license: this.state.license,
+      issuedBy: this.state.issuedBy,
+      whenIssued: this.state.whenIssued,
+      validUntil: this.state.validUntil,
+      licenseCategory: this.state.licenseCategory,
+    });
   };
 
 
@@ -62,14 +70,26 @@ class UpdateLicense extends PureComponent {
   //   });
   // };
 
+
+  handleChangeState = (state) => (event) => {
+    (event.target.value !== '')?(
+      this.setState({
+        [state]: event.target.value,
+      })
+    ):(this.setState({
+      [state]: this.props.person[state],
+    }))
+  };
+
     render() {
       const { classes } = this.props;
-
-      console.log('license',this.props.person.license);
-      console.log('state',this.state);
+      // const { license, issuedBy, whenIssued, validUntil, licenseCategory } = this.state;
+      console.log('!!!!!!!!!!!props!!!!!!!!!!',this.props.updateDriversLicense);
       return (
 
             <div>
+              <DriversLicenseContext.Consumer>
+                { updateDriversLicense => (this.setState({updateDriversLicense: updateDriversLicense})) }</DriversLicenseContext.Consumer>
               <h3 className={Style.account_head}>Driver's license</h3>
               <div className={classNames(classes.container, Style.account_block)}>
                     <TextField
@@ -77,6 +97,7 @@ class UpdateLicense extends PureComponent {
                       label="License Series and Number"
                       className={classes.textField}
                       // onChange={this.handleChange('License Series and Number')}
+                       onBlur={this.handleChangeState('license')}
                       margin="normal"
                     />
                     <TextField
@@ -84,6 +105,8 @@ class UpdateLicense extends PureComponent {
                       label="Issued by"
                       className={classes.textField}
                       // onChange={this.handleChange('Issued by')}
+                      onBlur={this.handleChangeState('issuedBy')}
+
                       margin="normal"
                     />
                     <TextField
@@ -91,6 +114,7 @@ class UpdateLicense extends PureComponent {
                       label="When issued"
                       type="date"
                       margin="normal"
+                      onChange={this.handleChangeState('whenIssued')}
                       className={classes.textField}
                       InputLabelProps={{
                         shrink: true,
@@ -101,6 +125,7 @@ class UpdateLicense extends PureComponent {
                       label="Valid until"
                       type="date"
                       margin="normal"
+                      onChange={this.handleChangeState('validUntil')}
                       className={classes.textField}
                       InputLabelProps={{
                         shrink: true,
@@ -110,10 +135,11 @@ class UpdateLicense extends PureComponent {
                       id="licenseCategory"
                       label="license category"
                       className={classes.textField}
+                      onBlur={this.handleChangeState('licenseCategory')}
                       // onChange={this.handleChange('license category')}
                       margin="normal"
                     />
-                <Button className={Style.account_button} variant="contained" color="primary" onClick={this.handleSubmit}>Submit</Button>
+                  <Button className={Style.account_button} variant="contained" color="primary" onClick={this.handleSubmit}>Submit</Button>
 
               </div>
 

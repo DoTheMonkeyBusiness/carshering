@@ -14,7 +14,6 @@ import {Link} from 'react-router-dom';
 
 export const mailFolderListItems = (props) => (
   <div>
-    {console.log('.....................')}
     <ListItem button component={Link} to="/account/information">
       <ListItemIcon>
         <PersonIcon />
@@ -42,11 +41,16 @@ export const mailFolderListItems = (props) => (
   </div>
 );
 
-export const otherMailFolderListItems = (props) => (
+
+export const otherMailFolderListItems = (props, updateDriversLicense) => (
   <div>
-    <ListItem button component={Link}
+    {console.log('updateDriversLicense!!!',updateDriversLicense)    }
+    <ListItem button
+              component={Link}
               to={{pathname: '/account/update',
-              state: {person: props}}} >
+              state: {person: props, updateDriversLicense: updateDriversLicense}}}
+
+    >
       <ListItemIcon>
         <RefreshIcon />
       </ListItemIcon>

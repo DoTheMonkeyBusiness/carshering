@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Provider } from 'react-redux'
 import {
 	BrowserRouter as Router,
-	Route
+	Route,
 } from 'react-router-dom';
 import {Switch} from 'react-router';
 import Home from './containers/Home';
@@ -16,10 +16,12 @@ import Information from './components/AccountComponents/AccountPersonalData';
 import Advertisements from './components/AccountComponents/AccountAdvertisements';
 import Messages from './components/AccountComponents/AccountMessages';
 import NewAdvertisements from './components/AccountComponents/AccountNewAdvertisement';
-import UpdateAccount from './components/AccountComponents/AccountUpdate';
+import UpdateAccount from './containers/AccountUpdate';
 import DeleteAccount from './components/AccountComponents/AccountDelete';
 import Store from './store'
+
 window.state = Store;
+
 
 
 class Routes extends Component{
@@ -35,7 +37,7 @@ class Routes extends Component{
             <Route path="/sign-in" component={SignIn}/>
             <Route path="/registration" component={Registration}/>
             <Route path="/admin" component={Admin}/>
-            <Account>
+            <Account path="/account" component={Account} history={history}>
               <Route path="/account/information" component={Information}/>
               <Route path="/account/advertisements" component={Advertisements}/>
               <Route path="/account/messages" component={Messages}/>

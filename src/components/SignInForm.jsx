@@ -94,6 +94,7 @@ class InputAdornments extends PureComponent {
     if (usersMail.indexOf(this.state.mail) !== -1 && userList[usersID[usersMail.indexOf(this.state.mail)]].password === this.state.password){
         this.setState(({correctForm: true}));
       this.props.history.push('/account');
+
         localStorage.setItem('auth',  userList[usersID[usersMail.indexOf(this.state.mail)]].id);
 
     }
@@ -117,6 +118,7 @@ class InputAdornments extends PureComponent {
 
   render() {
     const { classes } = this.props;
+    console.log('......',this.props);
 
     return (
       <div className={classes.root}>

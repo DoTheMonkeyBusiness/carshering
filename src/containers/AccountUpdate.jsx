@@ -5,10 +5,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 // import Typography from '@material-ui/core/Typography';
-import UpdateLicense from './AccountUpdateLicense';
-import UpdatePassport from './AccountUpdatePassport';
-import UpdateUserData from './AccountUpdateUserData';
-import Style from './AccountComponents.sass';
+import UpdateLicense from '../components/AccountComponents/AccountUpdateLicense';
+import UpdatePassport from '../components/AccountComponents/AccountUpdatePassport';
+import UpdateUserData from '../components/AccountComponents/AccountUpdateUserData';
+import Style from '../components/AccountComponents/AccountComponents.sass';
 // import {ThemeContext} from '../../context';
 
 
@@ -50,7 +50,9 @@ class SimpleTabs extends PureComponent {
   render() {
     const { classes } = this.props;
     const { value } = this.state;
-    const { person } = this.props.location.state;
+    const { person, updateDriversLicense} = this.props.location.state;
+    console.log('----------updateDriversLicense-----',this.props);
+
     console.log('update', person );
 
     return (
@@ -63,7 +65,7 @@ class SimpleTabs extends PureComponent {
             <Tab label="User Data" />
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer><UpdateLicense person={person}/></TabContainer>}
+        {value === 0 && <TabContainer><UpdateLicense person={person} updateDriversLicense={updateDriversLicense}/></TabContainer>}
         {value === 1 && <TabContainer><UpdatePassport person={person}/></TabContainer>}
         {value === 2 && <TabContainer><UpdateUserData person={person}/></TabContainer>}
         {/*</ThemeContext.Consumer>*/}

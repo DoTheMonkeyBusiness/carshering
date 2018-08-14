@@ -12,12 +12,13 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { mailFolderListItems, otherMailFolderListItems } from './AccountComponents/AccountFolderListItems';
+import { mailFolderListItems, otherMailFolderListItems } from '../components/AccountComponents/AccountFolderListItems';
 import Theme from '../theme/Theme';
 import {MuiThemeProvider} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Style from './AccountComponents/AccountComponents.sass';
+import Style from '../components/AccountComponents/AccountComponents.sass';
 // import {ThemeContext} from '../context';
+
 
 
 const drawerWidth = 250;
@@ -114,8 +115,9 @@ class MiniDrawer extends Component {
 
   render() {
     const { classes, theme } = this.props;
-    console.log('person',this.props.person);
+    console.log('person');
     console.log('re-render-Content');
+    console.log('updateDriversLicense',this.props.updateDriversLicense);
     return (
       <div className={classNames(classes.root, Style.account_content)}>
         <MuiThemeProvider theme={Theme}>
@@ -155,7 +157,7 @@ class MiniDrawer extends Component {
           <Divider />
           <List>{mailFolderListItems(this.props.person)}</List>
           <Divider />
-          <List>{otherMailFolderListItems(this.props.person)}</List>
+          <List>{otherMailFolderListItems(this.props.person, this.props.updateDriversLicense, this.props.history)}</List>
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />

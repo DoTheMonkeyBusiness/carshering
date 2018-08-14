@@ -11,10 +11,16 @@ export const addNewUser = ({userID, userMail, userPassword}) => {
   }
 };
 
-export const getUser = (userID) => {
+export const updateDriversLicense = (userID, license, issuedBy, whenIssued, validUntil, licenseCategory) => {
+  console.log('lookatme',(userID, license, issuedBy, whenIssued, validUntil, licenseCategory));
   return {
     type: constants.UPDATE_DRIVERS_LICENSE,
     userID,
+    license,
+    issuedBy,
+    whenIssued,
+    validUntil,
+    licenseCategory
   }
 };
 
