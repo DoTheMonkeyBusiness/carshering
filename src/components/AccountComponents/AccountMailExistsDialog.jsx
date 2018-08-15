@@ -22,7 +22,7 @@ class MailExists extends PureComponent {
           <DialogTitle id="alert-dialog-title">{'This mail already exists'}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              We found mail <span className={Style.mail_view}>{this.props.mail}</span> in our system, would you like to log in?
+              We found mail <span className={Style.mail_view}>{this.props.mail}</span> in our system.
             </DialogContentText>
           </DialogContent>
           <DialogActions>

@@ -12,7 +12,7 @@ import SignIn from './containers/SignIn';
 import Registration from './containers/Registration';
 import Admin from './containers/Admin';
 import Account from './containers/Account';
-import Information from './components/AccountComponents/AccountPersonalData';
+import Information from './containers/AccountPersonalData';
 import Advertisements from './components/AccountComponents/AccountAdvertisements';
 import Messages from './components/AccountComponents/AccountMessages';
 import NewAdvertisements from './components/AccountComponents/AccountNewAdvertisement';

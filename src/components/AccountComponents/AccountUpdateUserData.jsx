@@ -117,7 +117,6 @@ class UpdateUserData extends PureComponent {
       });
     }
     else {
-      this.errorDialog();
       this.setState({open: true});
     }
   };
@@ -128,15 +127,6 @@ class UpdateUserData extends PureComponent {
   };
 
 
-  errorDialog() {
-    if (this.state.mailExists === true)
-    {
-      alert('this mail exists');
-    }
-    else {
-      alert('check correctness of the mail');
-    }
-  }
 
   handleChangeState = (state) => (event) => {
     (event.target.value !== '')?(

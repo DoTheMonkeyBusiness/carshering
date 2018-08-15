@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import '../../node_modules/normalize.css/normalize.css';
 import 'styles/base/_main.sass'; // Global styles
 import 'styles/base/_common.sass';  // Global styles
@@ -9,7 +9,7 @@ import {MuiThemeProvider} from '@material-ui/core/styles';
 import {connect} from 'react-redux';
 import SignInForm from '../components/SignInForm'
 
-class Registration extends Component {
+class Registration extends PureComponent {
 
   render() {
     console.log(this.props);

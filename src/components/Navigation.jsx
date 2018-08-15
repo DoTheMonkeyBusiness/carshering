@@ -61,7 +61,7 @@ class Navigation extends PureComponent {
                       <Button size="large" color="secondary" onClick={this.removeStorage} component={Link} to="/">Log-Out</Button>) : (
                       <div>
                         {localStorage.getItem('auth') ?
-                          <Button size="large" color="secondary" component={Link} to="/account">Account</Button> :
+                          <Button size="large" color="secondary" component={Link} to="/account/information">Account</Button> :
                           <Button size="large" color="secondary" component={Link} to="/sign-in">Sign-in</Button>}
                         <Button size="large" color="secondary" component={Link} to="/registration">Registration</Button>
                       </div>)

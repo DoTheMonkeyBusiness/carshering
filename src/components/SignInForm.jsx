@@ -86,14 +86,14 @@ class InputAdornments extends PureComponent {
   checkForMail = () => {
     let userList = this.props.users;
     let usersMail = Object.keys(userList).map(c => {
-      return (userList[c].email)
+      return (userList[c].mail)
     });
     let usersID = Object.keys(userList).map(c => {
       return (userList[c].id)
     });
     if (usersMail.indexOf(this.state.mail) !== -1 && userList[usersID[usersMail.indexOf(this.state.mail)]].password === this.state.password){
         this.setState(({correctForm: true}));
-      this.props.history.push('/account');
+      this.props.history.push('/account/information');
 
         localStorage.setItem('auth',  userList[usersID[usersMail.indexOf(this.state.mail)]].id);
 
