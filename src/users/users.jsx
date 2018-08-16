@@ -5,13 +5,13 @@ export const userList = {
     [
         {
         id: '1',
-        email: '12345@gmail.com',
+        mail: '12345@gmail.com',
         password: '123'
 
         },
         {
             id: '2',
-            email: '1234@gmail.com',
+            mail: '1234@gmail.com',
             password: '123'
 
         },

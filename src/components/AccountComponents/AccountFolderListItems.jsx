@@ -32,7 +32,7 @@ export const mailFolderListItems = (
       </ListItemIcon>
       <ListItemText primary="messages" />
     </ListItem>
-    <ListItem button  component={Link} to="/account/new-advertisement">
+    <ListItem button  component={Link} to="/account/termsOfAdvertisement">
       <ListItemIcon>
         <AddIcon />
       </ListItemIcon>

@@ -86,9 +86,10 @@ class InputAdornments extends PureComponent {
     const userList = this.props.users;
     console.log(userList);
     let usersMail = Object.keys(userList).map(c => {
-      return (userList[c].email)
+      return (userList[c].mail)
     });
-    console.log(usersMail);
+    console.log('look at me now',usersMail);
+    console.log(usersMail.indexOf(this.state.mail));
     if (usersMail.indexOf(this.state.mail) !== -1){
       this.setState({mailExists: true});
     }

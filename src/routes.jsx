@@ -15,9 +15,10 @@ import Account from './containers/Account';
 import Information from './containers/AccountPersonalData';
 import Advertisements from './components/AccountComponents/AccountAdvertisements';
 import Messages from './components/AccountComponents/AccountMessages';
-import NewAdvertisements from './components/AccountComponents/AccountNewAdvertisement';
+import NewAdvertisements from './containers/NewAdvertisement';
 import UpdateAccount from './containers/AccountUpdate';
 import DeleteAccount from './components/AccountComponents/AccountDelete';
+import TermsOfAdvertisement from './components/AccountComponents/AccountTermsOfAdvertisement';
 import Store from './store'
 
 window.state = Store;
@@ -41,10 +42,11 @@ class Routes extends Component{
               <Route path="/account/information" component={Information}/>
               <Route path="/account/advertisements" component={Advertisements}/>
               <Route path="/account/messages" component={Messages}/>
-              <Route path="/account/new-advertisement" component={NewAdvertisements}/>
               <Route path="/account/update" component={UpdateAccount}/>
               <Route path="/account/delete" component={DeleteAccount}/>
+              <Route path="/account/termsOfAdvertisement" component={TermsOfAdvertisement}/>
             </Account>
+            <Route path="/new-advertisement" component={NewAdvertisements}/>
           </Switch>
         </div>
       </Provider>

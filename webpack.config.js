@@ -43,6 +43,7 @@ module.exports = {
   devServer: {
     contentBase: './public',
     // do not print bundle build stats
+    https: false,
     noInfo: true,
     // enable HMR
     hot: true,
