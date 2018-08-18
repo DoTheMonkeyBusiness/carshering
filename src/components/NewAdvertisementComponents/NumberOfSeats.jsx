@@ -50,15 +50,8 @@ class NumberOfSeats extends PureComponent {
   constructor() {
     super();
 
-    this.state={
-
-      numberOfSeats: ''
-
-    };
   }
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
-  };
+
 
 
   render() {
@@ -68,8 +61,8 @@ class NumberOfSeats extends PureComponent {
         select
         label="Numbers of seats"
         className={classes.textField}
-        value={this.state.numberOfSeats}
-        onChange={this.handleChange('numberOfSeats')}
+        value={this.props.numberOfSeats}
+        onChange={this.props.handleChange('numberOfSeats')}
         margin="normal"
 
       >

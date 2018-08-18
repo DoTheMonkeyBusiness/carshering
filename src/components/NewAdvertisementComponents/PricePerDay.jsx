@@ -2,7 +2,8 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
 
 
 
@@ -21,55 +22,33 @@ const styles = theme => ({
   },
 });
 
-
-const drive = [
-  {
-    value: 'front-wheel ',
-    label: 'front-wheel ',
-  },
-  {
-    value: 'rear',
-    label: 'rear',
-  },
-  {
-    value: 'four-wheel',
-    label: 'four-wheel',
-  },
-
-];
-
-class Drive extends PureComponent {
+class PricePerDay  extends PureComponent {
 
   constructor() {
     super();
 
-  }
 
+  }
 
 
   render() {
     const { classes } = this.props;
     return (
       <div><TextField
-        select
-        label="Drive"
+        id="pricePerDay"
+        label="Price per day"
         className={classes.textField}
-        value={this.props.drive}
-        onChange={this.props.handleChange('drive')}
+        onBlur={this.props.handleChange('pricePerDay')}
         margin="normal"
-
-      >
-        {drive.map(option => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </TextField></div>
+        InputProps={{
+          endAdornment: <InputAdornment position="start">/1 day</InputAdornment>,
+        }}
+      /></div>
     );
   }
 }
-Drive.propTypes = {
+PricePerDay .propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Drive)
+export default withStyles(styles)(PricePerDay)

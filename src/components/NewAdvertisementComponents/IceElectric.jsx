@@ -38,15 +38,8 @@ class IceElectric extends PureComponent {
   constructor() {
     super();
 
-    this.state={
-
-      iceElectric: ''
-
-    };
   }
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
-  };
+
 
 
   render() {
@@ -56,8 +49,8 @@ class IceElectric extends PureComponent {
         select
         label="ICE/Electric"
         className={classes.textField}
-        value={this.state.iceElectric}
-        onChange={this.handleChange('iceElectric')}
+        value={this.props.iceElectric}
+        onChange={this.props.handleChange('iceElectric')}
         margin="normal"
 
       >

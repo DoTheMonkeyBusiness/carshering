@@ -42,16 +42,10 @@ class GearboxType extends PureComponent {
   constructor() {
     super();
 
-    this.state={
 
-      gearboxType: ''
-
-    };
   }
 
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
-  };
+
 
   render() {
     const { classes } = this.props;
@@ -60,8 +54,8 @@ class GearboxType extends PureComponent {
         select
         label="Gearbox Type"
         className={classes.textField}
-        value={this.state.gearboxType}
-        onChange={this.handleChange('gearboxType')}
+        value={this.props.gearboxType}
+        onChange={this.props.handleChange('gearboxType')}
         margin="normal"
       >
         {gearboxType.map(option => (

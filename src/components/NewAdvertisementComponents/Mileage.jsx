@@ -26,7 +26,12 @@ class Mileage extends PureComponent {
   constructor() {
     super();
 
+
   }
+
+
+
+
 
   render() {
     const { classes } = this.props;
@@ -36,6 +41,7 @@ class Mileage extends PureComponent {
         label="Mileage"
         margin="normal"
         className={classes.textField}
+        onBlur={this.props.handleChange('mileage')}
       /></div>
     );
   }

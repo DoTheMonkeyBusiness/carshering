@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 
 
 
+
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -26,7 +27,9 @@ class CarMake extends PureComponent {
     constructor() {
         super();
 
+
     }
+
 
     render() {
       const { classes } = this.props;
@@ -35,6 +38,7 @@ class CarMake extends PureComponent {
               id="CarMake"
               label="Car Make"
               className={classes.textField}
+              onBlur={this.props.handleChange('carMake')}
               margin="normal"
               /></div>
         );

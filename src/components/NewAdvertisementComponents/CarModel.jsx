@@ -26,7 +26,11 @@ class CarModel extends PureComponent {
   constructor() {
     super();
 
+
+
   }
+
+
 
   render() {
     const { classes } = this.props;
@@ -34,6 +38,7 @@ class CarModel extends PureComponent {
       <div><TextField
         id="CarModel"
         label="Car Model"
+        onBlur={this.props.handleChange('carModel')}
         className={classes.textField}
         margin="normal"
       /></div>

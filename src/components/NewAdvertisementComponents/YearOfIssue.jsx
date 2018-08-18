@@ -26,7 +26,9 @@ class YearOfIssue extends PureComponent {
   constructor() {
     super();
 
+
   }
+
 
   render() {
     const { classes } = this.props;
@@ -37,6 +39,8 @@ class YearOfIssue extends PureComponent {
         margin="normal"
         type="date"
         className={classes.textField}
+        value={this.props.yearOfIssue}
+        onChange={this.props.handleChange('yearOfIssue')}
         InputLabelProps={{
           shrink: true,
         }}

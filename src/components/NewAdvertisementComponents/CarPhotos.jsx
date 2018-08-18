@@ -85,36 +85,17 @@ class CarPhotos extends PureComponent {
 
   constructor() {
     super();
-    this.state ={
 
-      imagePreviewUrl: '',
-    }
 
   }
 
-  handleFiles = (event) => {
-    // event.preventDefault();
-    console.log(event);
-    console.log(this.state.imagePreviewUrl);
 
-    let reader = new FileReader();
-    // let file = event.target.files[0];
-
-    reader.onloadend = () => {
-      this.setState({
-        // fileName: file.name,
-        imagePreviewUrl: reader.result
-      });
-    };
-
-    // reader.readAsDataURL(file)
-  };
   render() {
     const {classes} = this.props;
     return (
       <div className={classes.root} style={{cursor: 'pointer'}}>
-        <Dropzone className={classes.root} accept="image/*" onDrop={this.handleFiles}>
-          <GridList className={classes.gridList} cols={4}>
+        <Dropzone className={classes.root} accept="image/*" onDrop={this.props.handleFiles}>
+          <GridList className={classes.gridList} cols={6}>
             {tileData.map(tile => (
               <GridListTile key={tile.id}>
                 <img src={tile.img} alt={tile.title}/>

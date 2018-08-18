@@ -50,15 +50,9 @@ class BodyType extends PureComponent {
   constructor() {
     super();
 
-    this.state={
 
-      bodyType: ''
-
-    };
   }
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
-  };
+
 
 
   render() {
@@ -68,8 +62,8 @@ class BodyType extends PureComponent {
         select
         label="Body Type"
         className={classes.textField}
-        value={this.state.bodyType}
-        onChange={this.handleChange('bodyType')}
+        value={this.props.bodyType}
+        onChange={this.props.handleChange('bodyType')}
         margin="normal"
 
       >

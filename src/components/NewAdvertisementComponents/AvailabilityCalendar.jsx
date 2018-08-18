@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Calendar from 'react-calendar';
 
 
 
@@ -14,14 +15,14 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 300,
+    width: 500,
   },
   menu: {
-    width: 300,
+    width: 500,
   },
 });
 
-class CarNumber extends PureComponent {
+class CarStatusData  extends PureComponent {
 
   constructor() {
     super();
@@ -30,22 +31,15 @@ class CarNumber extends PureComponent {
   }
 
 
-
   render() {
     const { classes } = this.props;
     return (
-      <div><TextField
-        id="carNumber"
-        label="Car number"
-        margin="normal"
-        className={classes.textField}
-        onBlur={this.props.handleChange('carNumber')}
-      /></div>
+      <div><Calendar className={classes.textField} selectRange={true} onChange={this.props.handleCalendar}/></div>
     );
   }
 }
-CarNumber.propTypes = {
+CarStatusData .propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CarNumber)
+export default withStyles(styles)(CarStatusData)

@@ -14,14 +14,14 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 300,
+    width: 500,
   },
   menu: {
-    width: 300,
+    width: 500,
   },
 });
 
-class CarNumber extends PureComponent {
+class CarStatusData  extends PureComponent {
 
   constructor() {
     super();
@@ -30,22 +30,23 @@ class CarNumber extends PureComponent {
   }
 
 
-
   render() {
     const { classes } = this.props;
     return (
       <div><TextField
-        id="carNumber"
-        label="Car number"
-        margin="normal"
+        id="carStatusData"
+        label="Car status data"
         className={classes.textField}
-        onBlur={this.props.handleChange('carNumber')}
+        onBlur={this.props.handleChange('carStatusData')}
+        margin="normal"
+        multiline
+
       /></div>
     );
   }
 }
-CarNumber.propTypes = {
+CarStatusData .propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CarNumber)
+export default withStyles(styles)(CarStatusData)

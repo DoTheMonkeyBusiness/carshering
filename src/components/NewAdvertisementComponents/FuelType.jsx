@@ -47,15 +47,9 @@ class FuelType extends PureComponent {
   constructor() {
     super();
 
-    this.state={
 
-      fuelType: ''
-
-    };
   }
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
-  };
+
 
 
   render() {
@@ -65,8 +59,8 @@ class FuelType extends PureComponent {
         select
         label="Fuel Type"
         className={classes.textField}
-        value={this.state.fuelType}
-        onChange={this.handleChange('fuelType')}
+        value={this.props.fuelType}
+        onChange={this.props.handleChange('fuelType')}
         margin="normal"
 
       >
