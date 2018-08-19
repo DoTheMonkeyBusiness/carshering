@@ -93,6 +93,7 @@ class UpdateLicense extends PureComponent {
                        onBlur={this.handleChangeState('license')}
                       margin="normal"
                     />
+
                     <TextField
                       id="licenseIssuedBy"
                       label="Issued by"

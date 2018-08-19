@@ -9,6 +9,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Background from '../../images/background-min.jpg';
 import ReactFileReader from 'react-file-reader';
 import Dropzone from 'react-dropzone';
+import DropzoneComponent from 'react-dropzone-component';
 
 
 const styles = theme => ({
@@ -81,6 +82,7 @@ const tileData = [
 
 ];
 
+
 class CarPhotos extends PureComponent {
 
   constructor() {
@@ -88,33 +90,46 @@ class CarPhotos extends PureComponent {
 
 
   }
+  componentWillReceiveProps(prewProps, nextProps){
+    (prewProps.carPhotos === nextProps.carPhotos)
+  }
 
 
   render() {
     const {classes} = this.props;
+    const carPhotos = this.props.carPhotos;
+    console.log(carPhotos);
+    console.log(tileData);
     return (
       <div className={classes.root} style={{cursor: 'pointer'}}>
         <Dropzone className={classes.root} accept="image/*" onDrop={this.props.handleFiles}>
-          <GridList className={classes.gridList} cols={6}>
-            {tileData.map(tile => (
-              <GridListTile key={tile.id}>
-                <img src={tile.img} alt={tile.title}/>
-                <GridListTileBar
-                  title={tile.title}
-                  classes={{
-                    root: classes.titleBar,
-                    title: classes.title,
-                  }}
-                  // actionIcon={
-                  //   <IconButton>
-                  //     <StarBorderIcon className={classes.title} />
-                  //   </IconButton>
-                  // }
-                />
-              </GridListTile>
-            ))}
-          </GridList>
-        </Dropzone>
+        <GridList className={classes.gridList} cols={6}>
+        {carPhotos.map(tile => (
+        <GridListTile key={tile.id}>
+        {console.log('!!!!!!!!!!!!1',tile.img)}
+        {(tile.img !== '')?
+        <img src={tile.img} alt={tile.title}/>:
+        <img src={Background} alt={tile.title}/>
+        }
+        <GridListTileBar
+        title={tile.title}
+        classes={{
+        root: classes.titleBar,
+        title: classes.title,
+        }}
+        // actionIcon={
+        //   <IconButton>
+        //     <StarBorderIcon className={classes.title} />
+        //   </IconButton>
+        // }
+        />
+        </GridListTile>
+        ))}
+        </GridList>
+      </Dropzone>
+        {/*<DropzoneComponent config={componentConfig}*/}
+                           {/*eventHandlers={eventHandlers}*/}
+                           {/*djsConfig={djsConfig} />*/}
       </div>
     );
   }

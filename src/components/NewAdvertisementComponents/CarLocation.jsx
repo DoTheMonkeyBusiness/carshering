@@ -1,18 +1,51 @@
-import React, {Component} from 'react';
-import GoogleMapReact from 'google-map-react';
+import React from 'react'
+import { compose, withProps } from 'recompose'
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 
-class CarLocation extends Component {
+const MyMapComponent = compose(
+  withProps({
+    googleMapURL: 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places',
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{width: '500px', height: `500px` }} />,
+    mapElement: <div style={{ height: `100%` }} />,
+  }),
+  withScriptjs,
+  withGoogleMap
+)((props) =>
+  <GoogleMap
+    defaultZoom={12}
+    defaultCenter={{ lat:53.626266, lng: 23.848448 }}
+    onClick={props.setMark}
+  >
+    {props.isMarkerShown && <Marker position={{ lat: parseFloat(props.carLocation.lat), lng: parseFloat(props.carLocation.lng) }} onClick={props.onMarkerClick} />}
+  </GoogleMap>
+)
 
-    constructor() {
-        super();
+class MyFancyComponent extends React.PureComponent {
 
-    }
+  // componentWillReceiveProps () {
+  //   this.handleMarkerClick();
+  //   this.delayedShowMarker()
+  // }
 
-    render() {
-        return (
-            <div>Content</div>
-        );
-    }
+  // delayedShowMarker = () => {
+  //    this.setState({ isMarkerShown: true })
+  // }
+
+  // handleMarkerClick = () => {
+  //   this.setState({ isMarkerShown: false })
+  // };
+
+  render() {
+    return (
+      <MyMapComponent
+        setMark={this.props.setMark}
+        isMarkerShown={this.props.isMarkerShown}
+        onMarkerClick={this.handleMarkerClick}
+        carLocation={this.props.carLocation}
+      />
+    )
+  }
 }
 
-export default CarLocation
+export default MyFancyComponent
