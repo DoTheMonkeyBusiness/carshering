@@ -11,6 +11,7 @@ Tired of complicated starters with 200MB of dependencies which are hard to under
 
 ### What were using
 
+* Redux 4
 * React 16
 * Webpack 3
 * React Router 4

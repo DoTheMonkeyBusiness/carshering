@@ -1,6 +1,6 @@
 import {createMuiTheme} from '@material-ui/core/styles/index';
 
-
+//the color of the site to use material-ui
 const theme = createMuiTheme({
   palette: {
     primary: {

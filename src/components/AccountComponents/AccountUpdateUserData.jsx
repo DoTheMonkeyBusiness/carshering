@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 // import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Style from './AccountComponents.sass';
 import classNames from 'classnames';
@@ -10,6 +11,8 @@ import hocLoader from './AccountHocLoader';
 import Store from '../../store';
 // import ReactFileReader from 'react-file-reader';
 import MailChangeController from '../../controllers/MailChangeController';
+import Dropzone from 'react-dropzone';
+
 
 const styles = theme => ({
   container: {
@@ -88,20 +91,17 @@ class UpdateUserData extends PureComponent {
   };
 
 
-  handleFiles = event => {
-    event.preventDefault();
-
-    let reader = new FileReader();
-    let file = event.target.files[0];
-
-    reader.onloadend = () => {
-      this.setState({
-        fileName: file.name,
-        imagePreviewUrl: reader.result
-      });
-    };
-
-    reader.readAsDataURL(file)
+  handleFiles = (acceptedFiles) => {
+    acceptedFiles.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.setState({
+          imagePreviewUrl: reader.result
+        });
+        // do whatever you want with the file content
+      };
+      reader.readAsDataURL(file);
+    })
 
   };
 
@@ -146,25 +146,13 @@ class UpdateUserData extends PureComponent {
       <div>
         <h3 className={Style.account_head}>User Data</h3>
         <form className={classNames(classes.container, Style.account_block)}>
-          {/*<ReactFileReader r fileTypes={['.jpg','.png', '.jpeg']} handleFiles={this.handleFiles}>*/}
-              {/*<Button*/}
-                {/*style={{width: 300}}*/}
-                {/*variant="contained"*/}
-                {/*color="primary"*/}
-                {/*id="userPhoto"*/}
-              {/*>Update Photo</Button>*/}
-          {/*</ReactFileReader>*/}
+          <Dropzone className={classes.textField} accept="image/*" onDrop={this.handleFiles}>
+            <Button className={Style.account_button} variant="contained" color="primary">Set Photo</Button>
+          </Dropzone>
 
-          <TextField
-            id="userPhoto"
-            label="Photo"
-            type="file"
-            onChange={this.handleFiles}
-            accept=".jpg, .jpeg, .png"
-            className={classes.textField}
-            margin="normal"
-          />
               <TextField
+                onClick={() => {
+                  console.log(this.state.imagePreviewUrl);}}
                 id="phoneNumber"
                 label="Phone number"
                 className={classes.textField}

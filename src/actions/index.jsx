@@ -1,6 +1,6 @@
 import constants from '../constants'
 
-
+//redux actions
 export const addNewUser = ({userID, userMail, userPassword}) => {
 
   return {

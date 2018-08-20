@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+  import React, {Component} from 'react';
 import MailNotConfirm from '../components/AccountComponents/AccountMailNotConfirmDialog'
 import MailExists from '../components/AccountComponents/AccountMailExistsDialog'
 
-
+  // This file determines which message will be shown to the user when they try to change the mail
 
 class MailChangeController extends Component {
 

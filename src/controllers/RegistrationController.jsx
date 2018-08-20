@@ -3,6 +3,8 @@ import MailExists from '../components/MailExists';
 import MailConfirm from '../components/MailConfirm';
 import ErrorDialog from '../components/ErrorDialog';
 
+// This file determines which message will be shown to the user at registration
+
 class RegistrationController extends PureComponent {
     render() {
       if (this.props.correctForm) {
